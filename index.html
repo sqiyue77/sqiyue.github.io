@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>积分计算器工具箱</title>
@@ -11,10 +12,16 @@
             box-sizing: border-box;
             font-family: "微软雅黑", sans-serif;
         }
-        body {
-            background-color: #ffffff;
-            padding: 20px 10px;
-        }
+body {
+  margin: 0;
+  padding: 0 10px;
+  box-sizing: border-box;
+  overflow-x: hidden; /* 禁止横向溢出 */
+}
+input, .box {
+  max-width: 100%;
+  box-sizing: border-box;
+}
         .box {
             max-width: 620px;
             width: 100%;
