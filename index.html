@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>积分计算器工具箱</title>
+    <title>阿瑞斯2积分计算器</title>
     <style>
         * {
             margin: 0;
@@ -14,9 +13,10 @@
         }
 body {
   margin: 0;
-  padding: 0 10px;
+  padding: 16px;
   box-sizing: border-box;
-  overflow-x: hidden; /* 禁止横向溢出 */
+  overflow-x: hidden;
+  width: 100%;
 }
 input, .box {
   max-width: 100%;
@@ -428,69 +428,30 @@ input, .box {
 
         <div class="days-text">总天数：<span id="totalDays">0</span> 天</div>
 
-        <div class="item">
-            <span class="label-text">氪金及其他所得：</span>
-            <div class="pay-row">
-                <input type="text" id="payCoin" placeholder="例：300 600 900" oninput="calcPay()">
-                <div id="payResult">0</div>
-            </div>
-        </div>
-        <div id="payTip">若需要多个数值相加，则两个数之间加空格（支持无数个空格）</div>
+<div class="form-item">
+  <label>氪金及其他所得：</label><br>
+  <input type="text" id="otherIncome" placeholder="例：300 600">
+  <span style="color:red;font-weight:bold;font-size:20px;margin-left:8px;" id="otherIncomeNum">0</span>
+  <div class="tip-text">若需要多个数值相加，则两个数之间加空格（支持无数个空格）</div>
+</div>
 
-        <div class="item check-item">
-            <span class="label-text">是否有月卡？</span>
-            <input type="checkbox" id="hasCard" onchange="toggleCardDay()">
-        </div>
-
-        <div class="item hide" id="cardDayPanel">
-            <span class="label-text">月卡剩余天数：</span>
-            <input type="number" id="cardDays" min="0" placeholder="正整数">
-        </div>
-
-        <div class="item check-item">
-            <span class="label-text">是否有战令？</span>
-            <input type="checkbox" id="hasBattle" onchange="toggleBattlePanel()">
-        </div>
-
-        <div id="battlePanel" class="hide">
-            <div class="item">
-                <span class="label-text">战令起始时间：</span>
-                <input type="date" id="battleStart">
-            </div>
-            <div class="item">
-                <span class="label-text">战令结束时间：</span>
-                <input type="date" id="battleEnd">
-            </div>
-            <div class="item check-item">
-                <span class="label-text">是否购买了进阶战令？</span>
-                <input type="checkbox" id="isAdvBattle">
-            </div>
-        </div>
-
-        <div class="item check-item">
-            <span class="label-text">是否有双倍游园币？</span>
-            <input type="checkbox" id="hasDouble" onchange="toggleDoublePanel()">
-        </div>
-        <div id="doublePanel" class="hide">
-            <div class="item">
-                <span class="label-text">双倍起始时间：</span>
-                <input type="date" id="doubleStart">
-            </div>
-            <div class="item">
-                <span class="label-text">双倍结束时间：</span>
-                <input type="date" id="doubleEnd">
-            </div>
-        </div>
-
-        <div class="item check-item">
-            <span class="label-text">是否有假日卡？</span>
-            <input type="checkbox" id="hasHoliday" onchange="toggleHolidayPanel()">
-        </div>
-        <div class="item hide" id="holidayPanel">
-            <span class="label-text">假日卡剩余天数：</span>
-            <input type="number" id="holidayDays" min="0" placeholder="正整数">
-        </div>
-        <div class="tip-text">（若在氪金及其他所得中已算入假日卡，则不必勾选该项）</div>
+<div class="check-row">
+  <input type="checkbox" id="monthCard">
+  <label for="monthCard">是否有月卡？</label>
+</div>
+<div class="check-row">
+  <input type="checkbox" id="battlePass">
+  <label for="battlePass">是否有战令？</label>
+</div>
+<div class="check-row">
+  <input type="checkbox" id="doubleCoin">
+  <label for="doubleCoin">是否有双倍游园币？</label>
+</div>
+<div class="check-row">
+  <input type="checkbox" id="holidayCard">
+  <label for="holidayCard">是否有假日卡？</label>
+</div>
+<div class="tip-text" style="margin-bottom:20px;">（若在氪金及其他所得中已算入假日卡，则不必勾选该项）</div>
 
         <div class="item">
             <span class="label-text">你最终需要多少积分？</span>
