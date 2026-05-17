@@ -84,9 +84,11 @@ input, .box {
             flex: 1;
             gap: 12px;
             flex-wrap: wrap;
+            width:100%;
         }
         #payCoin {
             flex: 1;
+            width:100%
         }
         #payResult {
             font-size: 24px;
@@ -161,13 +163,13 @@ input, .box {
         .text-gray-small {
             font-size: clamp(15px,2.2vw,18px);
             color: #777;
-            margin: -12px 0 20px 240px;
+            margin: -12px 0 20px 0px;
         }
         .target-tip {
             font-size: clamp(15px,2.2vw,18px);
             color: #888;
             margin: -12px 0 20px 0;
-            padding-left: 240px;
+            padding-left: 0px;
         }
         .judge-result {
             margin-top:15px;
@@ -429,11 +431,11 @@ input, .box {
 
         <div class="days-text">总天数：<span id="totalDays">0</span> 天</div>
 
-        <div class="item">
+        <div class="item" style="flex-direction:column;align-items:flex-start;">
             <span class="label-text">氪金及其他所得：</span><br>
             <div class="pay-row">
                 <input type="text" id="payCoin" placeholder="例：300 600 900" oninput="calcPay()"><br>
-                <div id="payResult">0</div>
+                <div id="payResult" style="width:100%;">0</div>
             </div>
         </div>
         <div id="payTip">若需要多个数值相加，则两个数之间加空格（支持无数个空格）</div>
