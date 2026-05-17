@@ -83,6 +83,7 @@ input, .box {
             align-items: center;
             flex: 1;
             gap: 12px;
+            flex-wrap: wrap;
         }
         #payCoin {
             flex: 1;
@@ -431,7 +432,7 @@ input, .box {
         <div class="item">
             <span class="label-text">氪金及其他所得：</span><br>
             <div class="pay-row">
-                <input type="text" id="payCoin" placeholder="例：300 600 900" oninput="calcPay()">
+                <input type="text" id="payCoin" placeholder="例：300 600 900" oninput="calcPay()"><br>
                 <div id="payResult">0</div>
             </div>
         </div>
