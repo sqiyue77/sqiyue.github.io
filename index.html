@@ -31,23 +31,24 @@ input, .box {
             padding: 30px 20px;
             position: relative;
         }
-        .switch-btn {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 45px;
-            height: 45px;
-            padding: 0;
-            background: #fff;
-            color: #409eff;
-            border: 2px solid #409eff;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 32px;
-            line-height: 41px;
-            text-align: center;
-            z-index: 100;
-        }
+.switch-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    background: #fff;
+    color: #409eff;
+    border: 2px solid #409eff;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 32px;
+    line-height: 45px;
+    text-align: center;
+    z-index: 100;
+}
+
         h2 {
             font-size: clamp(28px,5vw,36px);
             font-weight: bold;
@@ -390,12 +391,43 @@ input, .box {
   font-weight: bold;
   color: #409eff;
 }
+
     </style>
 </head>
 <body>
+<!-- 全局下拉菜单：放在所有页面盒子最外面，永久存在DOM中 -->
+<div id="menuList" class="hide" style="
+  position:absolute;
+  background:#ffffff;
+  border:2px solid #409eff;
+  border-radius:8px;
+  z-index:200;
+  min-width:175px;
+  overflow:hidden;
+">
+    <!-- 第一行 -->
+    <div style="padding:18px 24px;cursor:pointer;font-size:18px;border-bottom:2px solid #000000;"
+         onmouseover="this.style.backgroundColor='#e6f2ff'"
+         onmouseout="this.style.backgroundColor='#ffffff'"
+         onclick="goPage('query')">快速积分查询</div>
+
+    <!-- 第二行 -->
+    <div style="padding:18px 24px;cursor:pointer;font-size:18px;border-bottom:4px solid #000000;"
+         onmouseover="this.style.backgroundColor='#e6f2ff'"
+         onmouseout="this.style.backgroundColor='#ffffff'"
+         onclick="goPage('empty')">待定</div>
+
+    <!-- 第三行：返回首页独立底色区块 -->
+    <div style="padding:18px 24px;cursor:pointer;font-size:18px;background:#f0f7ff;"
+         onmouseover="this.style.backgroundColor='#d6eaff'"
+         onmouseout="this.style.backgroundColor='#f0f7ff'"
+         onclick="goPage('home')">返回首页</div>
+</div>
 <!-- 计算器A：原有积分计算器 -->
 <div id="calcA" class="box">
-    <button class="switch-btn" onclick="switchCalc()">🔄</button>
+    <!-- 左上角菜单唤起按钮 -->
+    <button class="switch-btn" onclick="toggleMenu(event)">🔄</button>
+
     <h2>积分计算器</h2>
 
     <div class="item">
@@ -425,7 +457,7 @@ input, .box {
         </div>
 
         <div class="item check-item">
-            <span class="label-text">当天的游园币是否<span class="text-orange">全部</span>已领取？</span>
+            <span class="label-text">起始时间当天的游园币是否<span class="text-orange">全部</span>已领取？</span>
             <input type="checkbox" id="todayGet">
         </div>
 
@@ -510,13 +542,19 @@ input, .box {
         由 <span class="bottom-author">S七月s_</span> 制作，希望真的有用<br>
         暂时未发现bug，如有遇到可以反馈<br>
         有新限定时，应该会进行更新
+        <!-- 分割间距+计时模块 -->
+        <div style="margin-top:12px;">
+            <div style="font-size:15px; color:#555; margin:4px 0; font-weight:bold;">剧情模式上一次剧情更新是</div>
+            <div id="timeDiffText" style="font-size:26px; color:#ff0000; font-weight:bold; line-height:1.8;"></div>
+        </div>
     </div>
 </div>
 
 <!-- 计算器B：快速积分查询 -->
 <div id="calcB" class="box hide">
-    <button class="switch-btn" onclick="switchCalc()">🔄</button>
-    <h2>快速积分查询</h2>
+    <button class="switch-btn" onclick="toggleMenu(event)">🔄</button>
+    <!-- 给h2加style，取消默认上边距，文字向上靠 -->
+    <h2 style="margin-top: 0;">快速积分查询</h2>
     <!-- 表格1：机能装备配件积分表 - 紫色边框 -->
     <table class="query-table table-1">
         <thead>
@@ -1253,15 +1291,75 @@ input, .box {
         有新限定时，应该会进行更新
     </div>
 </div> <!-- 这是calcB快速查询盒子的结束标签 -->
+<div id="emptyPage" class="box hide">
+    <button class="switch-btn" onclick="toggleMenu(event)">🔄</button>
+    <h2 style="margin-top: 0;">功能待定，敬请期待</h2>
+
+    <div class="bottom-info">
+        由 <span class="bottom-author">S七月s_</span> 制作，希望真的有用<br>
+        暂时未发现bug，如有遇到可以反馈<br>
+        有新限定时，应该会进行更新
+    </div>
+</div>
 
 <script>
-    function switchCalc() {
-        const a = document.getElementById("calcA");
-        const b = document.getElementById("calcB");
-        a.classList.toggle("hide");
-        b.classList.toggle("hide");
-    }
+    // 1. 打开/关闭下拉菜单
+function toggleMenu(event){
+    // 获取被点击的按钮元素
+    const btn = event.currentTarget;
+    const menu = document.getElementById("menuList");
 
+    // 获取按钮在页面中的坐标
+    const rect = btn.getBoundingClientRect();
+    // 菜单摆放在按钮左下方，微调偏移量对齐
+    menu.style.left = rect.left + "px";
+    menu.style.top = (rect.bottom + 8) + "px";
+
+    // 展开/收起菜单
+    menu.classList.toggle("hide");
+}
+
+// 2. 页面跳转统一逻辑
+function goPage(pageType){
+    // 关闭下拉菜单
+    document.getElementById("menuList").classList.add("hide");
+    // 所有页面全部先隐藏
+    document.getElementById("calcA").classList.add("hide");
+    document.getElementById("calcB").classList.add("hide");
+    document.getElementById("emptyPage").classList.add("hide");
+
+    // 根据选项跳转页面
+    if(pageType === 'query'){
+        document.getElementById("calcB").classList.remove("hide");
+    }else if(pageType === 'empty'){
+        document.getElementById("emptyPage").classList.remove("hide");
+    }else if(pageType === 'home'){
+        // 返回主页面
+        document.getElementById("calcA").classList.remove("hide");
+    }
+}
+
+// 3. 返回主页面（calcA）
+
+// 可选优化：点击页面空白区域自动收起下拉菜单
+document.body.addEventListener('click', function(e) {
+    const menu = document.getElementById("menuList");
+    // 获取页面上所有左上角切换按钮
+    const allSwitchBtns = document.querySelectorAll(".switch-btn");
+    let clickedBtn = false;
+
+    // 遍历所有按钮，判断点击位置是否命中任意一个切换按钮
+    allSwitchBtns.forEach(btn => {
+        if (btn.contains(e.target)) {
+            clickedBtn = true;
+        }
+    });
+
+    // 只有既没点菜单、也没点任意切换按钮，才收起下拉菜单
+    if (!menu.contains(e.target) && !clickedBtn) {
+        menu.classList.add("hide");
+    }
+});
     function getTodayStr() {
         const d = new Date();
         const year = d.getFullYear();
@@ -1578,6 +1676,28 @@ function calcQuickTotal() {
 
     document.getElementById("quickTotalScore").innerText = "总积分：" + score;
 }
+</script>
+<script>
+    // ==========【唯一修改处】修改这里即可更换起始时间==========
+    // 格式：new Date(年份, 月份-1, 日期, 时, 分, 秒)
+    // 1月30日 = 月份填0；7月30日 = 月份填6
+    const startTimestamp = new Date(2026, 0, 30, 0, 0, 0).getTime();
+    // ==========================================================
+
+    function updateCountTime() {
+        const nowTime = Date.now();
+        const totalMs = nowTime - startTimestamp;
+
+        const day = Math.floor(totalMs / (1000 * 60 * 60 * 24));
+        const hour = Math.floor((totalMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minute = Math.floor((totalMs % (1000 * 60 * 60)) / (1000 * 60));
+        const second = Math.floor((totalMs % (1000 * 60)) / 1000);
+
+        document.getElementById("timeDiffText").innerText = `${day}天${hour}小时${minute}分钟${second}秒前`;
+    }
+
+    updateCountTime();
+    setInterval(updateCountTime, 1000);
 </script>
 </body>
 </html>
