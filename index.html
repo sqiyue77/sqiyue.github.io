@@ -57,11 +57,11 @@ input, .box {
             text-align: center;
         }
         .item {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            flex-wrap: nowrap;
-        }
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
         .label-text {
             font-size: clamp(18px,3vw,22px);
             color: #333;
@@ -122,14 +122,35 @@ input, .box {
             cursor: pointer;
         }
         .check-item {
-            justify-content: space-between;
-        }
-        .check-item input[type="checkbox"] {
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-            flex-shrink: 0;
-        }
+    justify-content: space-between;
+}
+.check-item input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+/*====下面紧接着粘贴整套 @media 代码====*/
+@media (max-width:720px) {
+    /*普通输入项，不是复选框：改成上下布局，标签在上，输入框占满整行 */
+    .item:not(.check-item) {
+        flex-direction: column;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .item:not(.check-item) input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /*复选框项目保持原有横向布局不变 */
+    .check-item {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
         .days-text {
             font-size: clamp(18px,3vw,22px);
             margin-bottom:20px;
@@ -415,7 +436,7 @@ input, .box {
     <div style="padding:18px 24px;cursor:pointer;font-size:18px;border-bottom:4px solid #000000;"
          onmouseover="this.style.backgroundColor='#e6f2ff'"
          onmouseout="this.style.backgroundColor='#ffffff'"
-         onclick="goPage('empty')">待定</div>
+         onclick="goPage('empty')">开发中...</div>
 
     <!-- 第三行：返回首页独立底色区块 -->
     <div style="padding:18px 24px;cursor:pointer;font-size:18px;background:#f0f7ff;"
@@ -457,7 +478,7 @@ input, .box {
         </div>
 
         <div class="item check-item">
-            <span class="label-text">起始时间当天的游园币是否<span class="text-orange">全部</span>已领取？</span>
+            <span class="label-text">当天的游园币是否已<span class="text-orange">全部</span>领取？</span>
             <input type="checkbox" id="todayGet">
         </div>
 
@@ -546,6 +567,7 @@ input, .box {
         <div style="margin-top:12px;">
             <div style="font-size:15px; color:#555; margin:4px 0; font-weight:bold;">剧情模式上一次剧情更新是</div>
             <div id="timeDiffText" style="font-size:26px; color:#ff0000; font-weight:bold; line-height:1.8;"></div>
+            <div style="font-size:14px;color:#666;margin:4px 0;">周年庆和春节期间，该功能停用</div>
         </div>
     </div>
 </div>
@@ -566,58 +588,69 @@ input, .box {
         </thead>
         <tbody>
         <tr>
-            <td>幽影摄魂</td>
+            <td><span onclick="showTip('名称：幽影摄魂\n类别：弓弩类武器\n耐久值：1000\n攻击力：550-850\n幽：攻击附加200点额外伤害\n影：每次攻击命中目标后叠加一层印记，叠满3层后清除印记并追加450点额外伤害和减速，印记有持续时间\n摄魂：每5次攻击会对范围内的目标施加摄魂buff，持续约2秒，不免疫摄魂的目标会强制打断攻击且无法行动，攻击被摄魂的目标额外造成800点额外伤害并解除摄魂\n*材质为五金')"
+                  style="color:#409eff;cursor:pointer;text-decoration:underline;">幽影摄魂</span></td>
             <td></td>
             <td>98888</td>
         </tr>
         <tr>
             <td></td>
-            <td>动能滑轮组</td>
+            <td><span onclick="showTip('名称：动能滑轮组\n效果：攻击有20%概率附加500点额外伤害')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">动能滑轮组</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>狩影箭台</td>
+            <td><span onclick="showTip('名称：狩影箭台\n效果：\n最大和最小攻击力+150\n蓄力时间-30%，伤害+10%\n[狩影]：每次攻击命中目标后叠加一层印记，叠满6层后清除层数并追加1000点额外伤害，印记有持续时间')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">狩影箭台</span></td>
             <td>58888</td>
         </tr>
         <tr>
-            <td>机能头盔</td>
+            <td><span onclick="showTip('名称：机能头盔\n属性：生命值+200\n[套装效果]：受到攻击后，增加75%移速，持续2秒，期间免疫减速\n随从可装备该套装')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">机能头盔</span></td>
             <td></td>
             <td>28888</td>
         </tr>
         <tr>
             <td></td>
-            <td>机能拓展程序</td>
+            <td><span onclick="showTip('名称：机能拓展程序\n效果：生命上限+100')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">机能拓展程序</span></td>
             <td>9888</td>
         </tr>
         <tr>
-            <td>机能上衣</td>
+            <td><span onclick="showTip('名称：机能上衣\n属性：生命值+320\n减伤：普通伤害减免+25%\n防弹：子弹伤害减免+40%\n[套装效果]：受到攻击后，增加75%移速，持续2秒，期间免疫减速\n随从可装备该套装')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">机能上衣</span></td>
             <td></td>
             <td>58888</td>
         </tr>
         <tr>
             <td></td>
-            <td>生命拓展插件</td>
+            <td><span onclick="showTip('名称：生命拓展插件\n效果：生命上限+60，普通伤害减免+5%')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">生命拓展插件</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>机能反应堆</td>
+            <td><span onclick="showTip('名称：机能反应堆\n效果：生命上限+200，伤害+5%，普通伤害减免+5%\n[裂变]：受到攻击后，对敌人施加buff，降低其10%攻击力和50%移速，持续2秒（仅尼克装备时可触发）\n\n注：听说该buff与年兽战鼓的震慑buff无法共存，同时只能施加一种')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">机能反应堆</span></td>
             <td>48888</td>
         </tr>
         <tr>
-            <td>机能护腿</td>
+            <td><span onclick="showTip('名称：机能护腿\n属性：生命值+280\n减伤：普通伤害减免+25%\n防弹：子弹伤害减免+40%\n[套装效果]：受到攻击后，增加75%移速，持续2秒，期间免疫减速\n随从可装备该套装')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">机能护腿</span></td>
             <td></td>
             <td>48888</td>
         </tr>
         <tr>
             <td></td>
-            <td>机能拓展芯片</td>
+            <td><span onclick="showTip('名称：机能拓展芯片\n效果：移速+5%')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">机能拓展芯片</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>机能推进器</td>
+            <td><span onclick="showTip('名称：机能推进器\n效果：生命上限+200，伤害+5%，移速+5%，蓄力移速+5%')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">机能推进器</span></td>
             <td>38888</td>
         </tr>
         </tbody>
@@ -634,58 +667,69 @@ input, .box {
         </thead>
         <tbody>
         <tr>
-            <td>牢炎铳</td>
+            <td><span onclick="showTip('名称：牢炎铳\n类别：火铳类武器\n耐久：1000\n攻击力：850\n龙炎：攻击附加200点额外伤害和减速\n炎爆：每3次攻击会发射一颗特殊子弹，造成850点额外伤害和减速，并施加灼烧buff，每秒造成120点额外伤害，持续2秒\n战意：发射特殊子弹后，叠加一层战意，每层+1%攻击力和5%移速，上限5层，持续约7秒\n*材质为点金\n\n听见你说，限五看龙铳～')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">牢炎铳</span></td>
             <td></td>
             <td>98888</td>
         </tr>
         <tr>
             <td></td>
-            <td>高能燃烧室</td>
+            <td><span onclick="showTip('名称：高能燃烧室\n效果：攻击有20%概率附加500点额外伤害\n注：炎爆不触发该效果')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">高能燃烧室</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>龙炎收容仓</td>
+            <td><span onclick="showTip('名称：龙炎收容仓\n效果：攻击力+100\n[龙怒]：体力消耗-10%，后摇-10%\n[龙肃]：每5次攻击会在目标处召唤炎龙，对范围内的目标造成600点额外伤害，炎龙存在期间每秒对范围内的目标造成200点额外伤害和减速，持续3秒\n[龙威]：炎龙存在时，每秒还将对范围内的召唤生物额外造成200点额外伤害\n\n抄袭星核这一块）')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">龙炎收容仓</span></td>
             <td>58888</td>
         </tr>
         <tr>
-            <td>龙炎头盔</td>
+            <td><span onclick="showTip('名称：龙炎头盔\n属性：生命值+200\n[套装效果]：每秒对自身周围的敌人造成100点额外伤害')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">龙炎头盔</span></td>
             <td></td>
             <td>28888</td>
         </tr>
         <tr>
             <td></td>
-            <td>龙炎拓展程序</td>
+            <td><span onclick="showTip('名称：龙炎拓展程序\n效果：生命上限+100')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">龙炎拓展程序</span></td>
             <td>9888</td>
         </tr>
         <tr>
-            <td>龙炎铠甲</td>
+            <td><span onclick="showTip('名称：龙炎铠甲\n属性：生命值+320\n减伤：普通伤害减免+25%\n龙息：牢炎铳伤害+5%\n[套装效果]：每秒对自身周围的敌人造成100点额外伤害')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">龙炎铠甲</span></td>
             <td></td>
             <td>58888</td>
         </tr>
         <tr>
             <td></td>
-            <td>炎盾拓展插件</td>
+            <td><span onclick="showTip('名称：炎盾拓展插件\n效果：受到攻击时，对伤害来源造成200点额外伤害')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">炎盾拓展插件</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>龙吟结晶</td>
+            <td><span onclick="showTip('名称：龙吟结晶\n效果：生命上限+300，每受到10次伤害，获得炎龙守护，持续20秒\n[炎龙守护]：立即获得200点护盾（可刷新但不叠加，可正常享受伤害减免），伤害+5%，每5秒回复15点生命值')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">龙吟结晶</span></td>
             <td>58888</td>
         </tr>
         <tr>
-            <td>龙炎腿甲</td>
+            <td><span onclick="showTip('名称：龙炎腿甲\n属性：生命值+280\n减伤：普通伤害减免+25%\n龙息：牢炎铳伤害+5%\n[套装效果]：每秒对自身周围的敌人造成100点额外伤害')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">龙炎腿甲</span></td>
             <td></td>
             <td>48888</td>
         </tr>
         <tr>
             <td></td>
-            <td>减伤拓展芯片</td>
+            <td><span onclick="showTip('名称：减伤拓展芯片\n效果：普通伤害减免+5%')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">减伤拓展芯片</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>龙吟装甲板</td>
+            <td><span onclick="showTip('名称：龙吟装甲板\n效果：生命上限+200，普通伤害减免+5%，移速+5%，蓄力移速+10%')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">龙吟装甲板</span></td>
             <td>38888</td>
         </tr>
         </tbody>
@@ -701,58 +745,69 @@ input, .box {
         </thead>
         <tbody>
         <tr>
-            <td>年兽战鼓</td>
+            <td><span onclick="showTip('名称：年兽战鼓\n类别：锤类武器\n耐久：1500\n攻击力：400\n战鼓：攻击附加200点额外伤害（可破甲）和减速\n重锤：攻击命中2次后，下一次攻击范围翻倍（前两次未命中目标则不会计入次数）\n鼓舞：攻击（未命中也能触发）会为范围内的友方单位（包括自己）叠加一层士气，每层+1%攻击和3%移速，最多10层，持续约5秒\n震慑：攻击会为命中的敌人叠加一层震慑，每层-2%攻击力，最多10层，持续约15秒\n节奏：蓄力不降低移速（但限五貌似都有这个buff，只是不一定写进去）\n*材质为球金\n\n注：听说震慑buff与机能上衣的甲301减攻buff不能共存，同时只能施加一种')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">年兽战鼓</span></td>
             <td></td>
             <td>98888</td>
         </tr>
         <tr>
             <td></td>
-            <td>祥瑞鼓身</td>
+            <td><span onclick="showTip('名称：祥瑞鼓身\n效果：攻击有25%概率附加400点额外伤害（可破甲...吧）\n隐藏效果：体力消耗-10%？（忘记具体数值了，反正有减体力消耗就是了）')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">祥瑞鼓身</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>震岳不息杵</td>
+            <td><span onclick="showTip('名称：震岳不息杵\n效果：攻击力+80，攻击每命中目标4次后，召唤年兽王原地持续锤击4次，每次对范围内的目标造成400点额外伤害（可破甲）')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">震岳不息杵</span></td>
             <td>58888</td>
         </tr>
         <tr>
-            <td>年兽头盔</td>
+            <td><span onclick="showTip('名称：年兽头盔\n属性：生命值+200\n[套装效果]：召唤小夕助战，血量5000，攻击力666-888（有一个远程攻击），普通伤害减免+30%，不受威压，战败后60秒重返战场\n年兽之威：小夕每次攻击命中后，自己+5%攻击力，最多10层，持续10秒\n祥瑞之音：小夕可以释放一次以自身为中心的范围攻击，命中目标后回复自身500点生命值并提高自身移速\n年兽护体：小夕战败后，立即给主控回复500点生命值并给一个buff，持续期间内，每5秒回复20血，攻击力+5%')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">年兽头盔</span></td>
             <td></td>
             <td>38888</td>
         </tr>
         <tr>
             <td></td>
-            <td>年兽拓展程序</td>
+            <td><span onclick="showTip('名称：年兽拓展程序\n效果：生命上限+100')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">年兽拓展程序</span></td>
             <td>9888</td>
         </tr>
         <tr>
-            <td>年兽铠甲</td>
+            <td><span onclick="showTip('名称：年兽铠甲\n属性：生命值+320\n减伤：普通伤害减免+25%\n振奋：年兽战鼓伤害+5%\n[套装效果]：召唤小夕助战，血量5000，攻击力666-888（有一个远程攻击），普通伤害减免+30%，不受威压，战败后60秒重返战场\n年兽之威：小夕每次攻击命中后，自己+5%攻击力，最多10层，持续10秒\n祥瑞之音：小夕可以释放一次以自身为中心的范围攻击，命中目标后回复自身500点生命值并提高自身移速\n年兽护体：小夕战败后，立即给主控回复500点生命值并给一个buff，持续期间内，每5秒回复20血，攻击力+5%')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">年兽铠甲</span></td>
             <td></td>
             <td>68888</td>
         </tr>
         <tr>
             <td></td>
-            <td>年兽拓展插件</td>
+            <td><span onclick="showTip('名称：年兽拓展插件\n效果：生命上限+100')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">年兽拓展插件</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>年兽核能装置</td>
+            <td><span onclick="showTip('名称：年兽核能装置\n效果：生命上限+400，普通伤害减免+10%\n\n 年兽套：我chovy，我甲301的被动技能呢？你出甲301给我出好的啊！')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">年兽核能装置</span></td>
             <td>58888</td>
         </tr>
         <tr>
-            <td>年兽腿甲</td>
+            <td><span onclick="showTip('名称：年兽腿甲\n属性：生命值+280\n减伤：普通伤害减免+25%\n振奋：年兽战鼓伤害+5%\n[套装效果]：召唤小夕助战，血量5000，攻击力666-888（有一个远程攻击），普通伤害减免+30%，不受威压，战败后60秒重返战场\n年兽之威：小夕每次攻击命中后，自己+5%攻击力，最多10层，持续10秒\n祥瑞之音：小夕可以释放一次以自身为中心的范围攻击，命中目标后回复自身500点生命值并提高自身移速\n年兽护体：小夕战败后，立即给主控回复500点生命值并给一个buff，持续期间内，每5秒回复20血，攻击力+5%')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">年兽腿甲</span></td>
             <td></td>
             <td>58888</td>
         </tr>
         <tr>
             <td></td>
-            <td>年兽拓展芯片</td>
+            <td><span onclick="showTip('名称：年兽拓展芯片\n效果：生命上限+100')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">年兽拓展芯片</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>年兽膝甲</td>
+            <td><span onclick="showTip('名称：年兽膝甲\n效果：生命上限+400，移速+5%，蓄力移速+10%\n\n 年兽套：我chovy，我腿301的伤害加成呢？你出腿301给我出好的啊！')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">年兽膝甲</span></td>
             <td>38888</td>
         </tr>
         </tbody>
@@ -768,58 +823,69 @@ input, .box {
         </thead>
         <tbody>
         <tr>
-            <td>星空之刃</td>
+            <td><span onclick="showTip('名称：星空之刃\n类别：刀斧类武器\n耐久：1500\n攻击力：800\n[近战形态]\n星云：攻击附加200点额外伤害\n星光：手持星刀时，移速+15%（听说有bug，实际加成为25%），蓄力不减移速\n流星：每次攻击后+20%移速（远近均可触发，不需要命中目标），持续2秒\n[远程形态]\n星源：蓄力0.25秒（听说的）后本次攻击切换为远程形态，会向指定方向发射一道贯穿剑气，对路径上的目标造成1000点额外伤害。若目标未持有星源buff，则挂上星源buff；反之，则消耗星源buff，追加600点额外伤害\n*材质为星金')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星空之刃</span></td>
             <td></td>
             <td>128888</td>
         </tr>
         <tr>
             <td></td>
-            <td>永恒刀镡</td>
+            <td><span onclick="showTip('名称：永恒刀镡\n效果：攻击有20%概率附加500点额外伤害\n\n注：远程攻击的剑气不触发该效果')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">永恒刀镡</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>领域核心</td>
+            <td><span onclick="showTip('lingyu_core')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">领域核心</span></td>
             <td>68888</td>
         </tr>
         <tr>
-            <td>星空头盔</td>
+            <td><span onclick="showTip('名称：星空头盔\n属性：生命值+200\n[套装效果]：每6秒回复30血，体力上限+25%，体力恢复速度+50%，在星空之刃的领域内获得额外加成：星空之刃攻击力+30%，自身移速+50%')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星空头盔</span></td>
             <td></td>
             <td>28888</td>
         </tr>
         <tr>
             <td></td>
-            <td>星空拓展程序</td>
+            <td><span onclick="showTip('名称：星空拓展程序\n效果：生命上限+100')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星空拓展程序</span></td>
             <td>9888</td>
         </tr>
         <tr>
-            <td>星空铠甲</td>
+            <td><span onclick="showTip('名称：星空铠甲\n属性：生命值+320\n减伤：普通伤害减免+25%\n星源：星空之刃伤害+10%\n[套装效果]：每6秒回复30血，体力上限+25%，体力恢复速度+50%，在星空之刃的领域内获得额外加成：星空之刃攻击力+30%，自身移速+50%')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星空铠甲</span></td>
             <td></td>
             <td>58888</td>
         </tr>
         <tr>
             <td></td>
-            <td>星空拓展插件</td>
+            <td><span onclick="showTip('名称：星空拓展插件\n效果：生命上限+100')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星空拓展插件</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>星空之翼</td>
+            <td><span onclick="showTip('名称：星空之翼\n效果：生命值+200，普通伤害减免+10%\n[星翼]：移速+10%\n[载具]:改造（就是把这个配件装到星空甲上）后可以使用星空之翼移动（目前最强坐骑，移速快还不耗耐久）\n[星炮]：进入战斗后，每0.5秒向敌人发射一个直线飞行的子弹，造成200点伤害（但好像不吃加成）')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星空之翼</span></td>
             <td>68888</td>
         </tr>
         <tr>
-            <td>星空腿甲</td>
+            <td><span onclick="showTip('名称：星空腿甲\n属性：生命值+280\n减伤：普通伤害减免+25%\n星源：星空之刃伤害+10%\n[套装效果]：每6秒回复30血，体力上限+25%，体力恢复速度+50%，在星空之刃的领域内获得额外加成：星空之刃攻击力+30%，自身移速+50%')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星空腿甲</span></td>
             <td></td>
             <td>48888</td>
         </tr>
         <tr>
             <td></td>
-            <td>星空拓展芯片</td>
+            <td><span onclick="showTip('名称：星空拓展芯片\n效果：生命上限+100')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星空拓展芯片</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>星空膝甲</td>
+            <td><span onclick="showTip('名称：星空膝甲\n效果：生命上限+200，伤害+5%，移速+5%，蓄力移速+10%')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星空膝甲</span></td>
             <td>38888</td>
         </tr>
         </tbody>
@@ -835,58 +901,69 @@ input, .box {
         </thead>
         <tbody>
         <tr>
-            <td>焱霜星核</td>
+            <td><span onclick="showTip('名称：焱霜星核\n类别：火铳类武器\n耐久：1500\n攻击力：800\n随机发射焱、霜、星3种子弹\n焱：攻击附加燃烧状态，持续2秒，成功施加燃烧状态则追加200点额外伤害\n霜：发射冰霜射线贯穿路径上的目标，造成1000点额外伤害并附加冰霜状态，持续2秒，目标持有冰霜状态时移速降低\n星：攻击附加400点额外伤害\n焱霜：当由星核施加的燃烧状态与冰霜状态结合时，消除这两种状态并追加600点额外伤害\n*材质为碑金\n\n注：若敌人有冰霜状态，则火弹命中会直接触发600额外伤害，但本身的200额外伤害会因为燃烧状态没能成功挂上而消失，同理，敌人身上的冰霜状态被火弹消除后，减速也会提前解除')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">焱霜星核</span></td>
             <td></td>
             <td>98888</td>
         </tr>
         <tr>
             <td></td>
-            <td>星核聚能装置</td>
+            <td><span onclick="showTip('名称：星核聚能装置\n效果：攻击有20%概率附加500点额外伤害\n\n注：冰射线不触发该效果')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星核聚能装置</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>星核熵增核心</td>
+            <td><span onclick="showTip('名称：星核熵增核心\n效果：攻击力+100，体力消耗-10%，精准度+35%，后摇-10%\n[星陨]：每5次攻击会在目标处降下一颗行星，对范围内的目标造成600点额外伤害并形成2秒黑洞，黑洞能对范围内的目标造成最多3次200点额外伤害和减速')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星核熵增核心</span></td>
             <td>58888</td>
         </tr>
         <tr>
-            <td>星核头盔</td>
+            <td><span onclick="showTip('名称：星核头盔\n属性：生命值+200\n[套装效果]：攻击力+10%，移速+10%')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星核头盔</span></td>
             <td></td>
             <td>28888</td>
         </tr>
         <tr>
             <td></td>
-            <td>星核拓展程序</td>
+            <td><span onclick="showTip('名称：星核拓展程序\n效果：生命上限+100')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星核拓展程序</span></td>
             <td>9888</td>
         </tr>
         <tr>
-            <td>星核铠甲</td>
+            <td><span onclick="showTip('名称：星核铠甲\n属性：生命值+320\n减伤：普通伤害减免+25%\n星核：焱霜星核伤害+5%\n[套装效果]：攻击力+10%，移速+10%')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星核铠甲</span></td>
             <td></td>
             <td>58888</td>
         </tr>
         <tr>
             <td></td>
-            <td>星核拓展插件</td>
+            <td><span onclick="showTip('名称：星核拓展插件\n效果：生命上限+100')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星核拓展插件</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>星核炉</td>
+            <td><span onclick="showTip('名称：星核炉\n效果：生命上限+200，普通伤害减免+5%\n[星炉]：每受到1次攻击，叠加一层buff，每层+1%伤害和5%移速，最多5层，持续30秒\n[充能]：每受到10次攻击（不确定扣血能不能触发），回复200点生命值')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星核炉</span></td>
             <td>58888</td>
         </tr>
         <tr>
-            <td>星核腿甲</td>
+            <td><span onclick="showTip('名称：星核腿甲\n属性：生命值+280\n减伤：普通伤害减免+25%\n星核：焱霜星核伤害+5%\n[套装效果]：攻击力+10%，移速+10%')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星核腿甲</span></td>
             <td></td>
             <td>48888</td>
         </tr>
         <tr>
             <td></td>
-            <td>星核拓展芯片</td>
+            <td><span onclick="showTip('名称：星核拓展芯片\n效果：生命上限+100')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星核拓展芯片</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>星核护膝</td>
+            <td><span onclick="showTip('名称：星核护膝\n效果：生命上限+200，普通伤害减免+5%，移速+5%，蓄力移速+5%')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">星核护膝</span></td>
             <td>38888</td>
         </tr>
         </tbody>
@@ -902,58 +979,69 @@ input, .box {
         </thead>
         <tbody>
         <tr>
-            <td>肘霄牢烬</td>
+            <td><span onclick="showTip('名称：九霄雷烬\n类别：长枪类武器\n耐久：1000\n攻击力：650\n九霄：攻击会对目标所在处追加小范围的600点额外伤害\n雷烬：雷枪落地后会停留在原地，每秒持续对周围的敌人造成200点额外伤害和减速，持续5秒，该伤害不可叠加\n急速：蓄力不减移速（还是那句话，限五貌似都有这个效果，只是不一定写进来）\n*材质为鸣金')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">九霄雷烬</span></td>
             <td></td>
             <td>98888</td>
         </tr>
         <tr>
             <td></td>
-            <td>电尾追霄柄</td>
+            <td><span onclick="showTip('名称：电尾追霄柄\n效果：攻击有20%概率附加500点额外伤害')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">电尾追霄柄</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>锁雷烬影枪</td>
+            <td><span onclick="showTip('名称：锁雷烬影枪\n效果：攻击力+100，体力消耗-10%\n[烬影]：靠近场地中存在的雷枪时，获得烬影buff，使自身攻击力+10%，移速+50%，持续3秒')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">锁雷烬影枪</span></td>
             <td>58888</td>
         </tr>
         <tr>
-            <td>九霄头盔</td>
+            <td><span onclick="showTip('名称：九霄头盔\n属性：生命值+200\n[套装效果]：进入战斗后，每2秒在自身周围随机位置降下落雷，对范围内的目标造成500点额外伤害，若自身在装备了雷脊霄雷炉时受到了落雷攻击，则回复200点生命值并获得爆发加速（可能是50%，不确定）')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">九霄头盔</span></td>
             <td></td>
             <td>28888</td>
         </tr>
         <tr>
             <td></td>
-            <td>九霄拓展程序</td>
+            <td><span onclick="showTip('名称：九霄拓展程序\n效果：生命上限+100')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">九霄拓展程序</span></td>
             <td>9888</td>
         </tr>
         <tr>
-            <td>九霄铠甲</td>
+            <td><span onclick="showTip('名称：九霄铠甲\n属性：生命值+320\n减伤：普通伤害减免+25%\n烬：九霄雷烬伤害+5%\n[套装效果]：进入战斗后，每2秒在自身周围随机位置降下落雷，对范围内的目标造成500点额外伤害，若自身在装备了雷脊霄雷炉时受到了落雷攻击，则回复200点生命值并获得爆发加速（可能是50%，不确定）')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">九霄铠甲</span></td>
             <td></td>
             <td>58888</td>
         </tr>
         <tr>
             <td></td>
-            <td>九霄拓展插件</td>
+            <td><span onclick="showTip('名称：九霄拓展插件\n效果：生命上限+100')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">九霄拓展插件</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>雷脊霄雷炉</td>
+            <td><span onclick="showTip('名称：雷脊霄雷炉\n效果：生命上限+200，普通伤害减免+5%\n雷炉：每受到1次攻击，叠加一层buff，每层+2%伤害，最多5层，持续30秒\n雷脊：每受到1次攻击，对伤害来源造成200点额外伤害和减速\n霄雷：受到雷击时，自身回复200点生命值并获得爆发加速（环境落雷和套装效果落雷均可触发该效果）\n')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">雷脊霄雷炉</span></td>
             <td>58888</td>
         </tr>
         <tr>
-            <td>九霄腿甲</td>
+            <td><span onclick="showTip('名称：九霄腿甲\n属性：生命值+280\n减伤：普通伤害减免+25%\n烬：九霄雷烬伤害+5%\n[套装效果]：进入战斗后，每2秒在自身周围随机位置降下落雷，对范围内的目标造成500点额外伤害，若自身在装备了雷脊霄雷炉时受到了落雷攻击，则回复200点生命值并获得爆发加速（可能是50%，不确定）')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">九霄腿甲</span></td>
             <td></td>
             <td>48888</td>
         </tr>
         <tr>
             <td></td>
-            <td>九霄拓展芯片</td>
+            <td><span onclick="showTip('名称：九霄拓展芯片\n效果：生命上限+100')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">九霄拓展芯片</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>脉冲烬痕胫</td>
+            <td><span onclick="showTip('名称：脉冲烬痕胫\n效果：生命上限+200，普通伤害减免+5%，移速+5%，蓄力移速+10%')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">脉冲烬痕胫</span></td>
             <td>38888</td>
         </tr>
         </tbody>
@@ -969,58 +1057,69 @@ input, .box {
         </thead>
         <tbody>
         <tr>
-            <td>极寒裂域</td>
+            <td><span onclick="showTip('名称：极寒裂域\n类别：步枪类武器\n耐久：1500\n攻击力：900\n冰息：攻击会对目标所在处追加小范围的450点额外伤害\n冰镇：每次攻击后，使自身移速提升，持续2秒（攻击未命中也能触发，但加速太少了不明显）\n冰魄：攻击命中目标时叠加一层buff，每层使敌人移速-8%，持续约15秒，叠满6层时清除层数并造成冰封，之后约3秒内无法再对被冰封的目标叠加buff\n冰封：立即造成1000点额外伤害，强制打断攻击且无法移动，持续2秒\n极寒之径：每4次攻击，额外对前方矩形范围内的目标造成600点额外伤害，同时留下一条极寒之径，路径上的目标会每秒受到100点额外伤害，持续2秒\n\n注：极寒之径的伤害在联机副本内的伤害为200点\n*材质为冰晶')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">极寒裂域</span></td>
             <td></td>
             <td>128888</td>
         </tr>
         <tr>
             <td></td>
-            <td>极寒弹芯</td>
+            <td><span onclick="showTip('名称：极寒弹芯\n效果：攻击有20%概率附加500点额外伤害')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">极寒弹芯</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>凛冬封域装置</td>
+            <td><span onclick="showTip('名称：凛冬封域装置\n效果：攻击力+100，体力消耗-10%，后摇-10%\n技能：极寒领域\n持续30秒，冷却60秒\n展开领域，每秒对领域内的目标造成100点额外伤害（打满是32次）并叠加一层冰魄的减速buff\n在领域内，若自身装备全套极寒套，则极寒裂域攻击力+30%，自身每5秒回复150血')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">凛冬封域装置</span></td>
             <td>58888</td>
         </tr>
         <tr>
-            <td>极寒头盔</td>
+            <td><span onclick="showTip('名称：极寒头盔\n属性：生命值+200\n[套装效果]：体力上限+25%，体力恢复速度+50%，移速+10%，在极寒领域内获得额外加成：极寒裂域攻击力+30%，自身每5秒回复150血')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">极寒头盔</span></td>
             <td></td>
             <td>28888</td>
         </tr>
         <tr>
             <td></td>
-            <td>极寒拓展程序</td>
+            <td><span onclick="showTip('名称：极寒拓展程序\n效果：生命上限+100')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">极寒拓展程序</span></td>
             <td>9888</td>
         </tr>
         <tr>
-            <td>极寒铠甲</td>
+            <td><span onclick="showTip('名称：极寒铠甲\n属性：生命值+320\n减伤：普通伤害减免+25%\n极寒：极寒裂域伤害+5%\n[套装效果]：体力上限+25%，体力恢复速度+50%，移速+10%，在极寒领域内获得额外加成：极寒裂域攻击力+30%，自身每5秒回复150血')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">极寒铠甲</span></td>
             <td></td>
             <td>58888</td>
         </tr>
         <tr>
             <td></td>
-            <td>极寒拓展插件</td>
+            <td><span onclick="showTip('名称：极寒拓展插件\n效果：生命上限+100')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">极寒拓展插件</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>凛冬护盾核心</td>
+            <td><span onclick="showTip('名称：凛冬护盾核心\n效果：生命上限+200，普通伤害减免+5%\n凛冬护佑：每5秒生成一个冰盾，可抵挡一次伤害（听说也可以挡掉本次攻击附带的控制效果，但掉血类dot无法抵挡）')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">凛冬护盾核心</span></td>
             <td>58888</td>
         </tr>
         <tr>
-            <td>极寒腿甲</td>
+            <td><span onclick="showTip('名称：极寒腿甲\n属性：生命值+280\n减伤：普通伤害减免+25%\n极寒：极寒裂域伤害+5%\n[套装效果]：体力上限+25%，体力恢复速度+50%，移速+10%，在极寒领域内获得额外加成：极寒裂域攻击力+30%，自身每5秒回复150血')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">极寒腿甲</span></td>
             <td></td>
             <td>48888</td>
         </tr>
         <tr>
             <td></td>
-            <td>极寒拓展芯片</td>
+            <td><span onclick="showTip('名称：极寒拓展芯片\n效果：生命上限+100')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">极寒拓展芯片</span></td>
             <td>9888</td>
         </tr>
         <tr>
             <td></td>
-            <td>凛冬动力骨骼</td>
+            <td><span onclick="showTip('名称：凛冬动力骨骼\n效果：生命上限+200，普通伤害减免+5%，移速+5%，蓄力移速+5%')"
+                      style="color:#409eff;cursor:pointer;text-decoration:underline;">凛冬动力骨骼</span></td>
             <td>38888</td>
         </tr>
         </tbody>
@@ -1214,7 +1313,7 @@ input, .box {
                 <option value="年兽战鼓">年兽战鼓</option>
                 <option value="星空之刃">星空之刃</option>
                 <option value="焱霜星核">焱霜星核</option>
-                <option value="肘霄牢烬">肘霄牢烬</option>
+                <option value="九霄雷烬">九霄雷烬</option>
                 <option value="极寒裂域">极寒裂域</option>
             </select>
             <select id="weaponPartSel">
@@ -1293,7 +1392,7 @@ input, .box {
 </div> <!-- 这是calcB快速查询盒子的结束标签 -->
 <div id="emptyPage" class="box hide">
     <button class="switch-btn" onclick="toggleMenu(event)">🔄</button>
-    <h2 style="margin-top: 0;">功能待定，敬请期待</h2>
+    <h2 style="margin-top: 0;">暂定为介绍各副本的掉落物情况和敌人信息，有其他想法可以私信</h2>
 
     <div class="bottom-info">
         由 <span class="bottom-author">S七月s_</span> 制作，希望真的有用<br>
@@ -1303,6 +1402,16 @@ input, .box {
 </div>
 
 <script>
+    let currentPage = "home";
+    // 词条弹窗文本库，所有长介绍全部写在这里，支持直接回车换行
+const tipData = {
+    lingyu_core:`名称：领域核心
+效果：攻击力+200，后摇-20%，蓄力时间-25%，体力消耗-20%
+[吸星]：攻击每命中敌人5次（远近均可计入次数）后都会为自身回复100点生命值
+技能：星空领域
+持续30秒，冷却60秒
+展开领域，使领域内的敌人移速-50%，蓄力时间增加，若自身装备了全套星空套，则星空之刃攻击力+30%，自身移速+50%`
+};
     // 1. 打开/关闭下拉菜单
 function toggleMenu(event){
     // 获取被点击的按钮元素
@@ -1327,6 +1436,9 @@ function goPage(pageType){
     document.getElementById("calcA").classList.add("hide");
     document.getElementById("calcB").classList.add("hide");
     document.getElementById("emptyPage").classList.add("hide");
+
+    //记录当前页面
+    currentPage = pageType;
 
     // 根据选项跳转页面
     if(pageType === 'query'){
@@ -1600,7 +1712,7 @@ const itemScore = {
     "年兽战鼓": { base:98888, small:9888, mid:58888, full:68776 },
     "星空之刃": { base:128888, small:9888, mid:68888, full:78776 },
     "焱霜星核": { base:98888, small:9888, mid:58888, full:68776 },
-    "肘霄牢烬": { base:98888, small:9888, mid:58888, full:68776 },
+    "九霄雷烬": { base:98888, small:9888, mid:58888, full:68776 },
     "极寒裂域": { base:128888, small:9888, mid:58888, full:68776 },
 
     // 头盔
@@ -1677,14 +1789,53 @@ function calcQuickTotal() {
     document.getElementById("quickTotalScore").innerText = "总积分：" + score;
 }
 </script>
+<div id="tipModal" style="
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:999;
+    background:rgba(0,0,0,0.35);
+    padding:16px;
+    align-items:center;
+    justify-content:center;
+">
+    <div id="tipContentBox" style="
+        background:#ffffff;
+        border:3px solid #409eff;
+        border-radius:14px;
+        max-width:calc(100% - 32px);
+        width:540px;
+        padding:20px;
+        position:relative;
+    ">
+        <span id="tipCloseBtn" style="
+            position:absolute;
+            top:10px;
+            right:14px;
+            font-size:24px;
+            cursor:pointer;
+            color:#666;
+        ">×</span>
+        <div id="tipText" style="font-size:16px;line-height:1.7;color:#222;white-space: pre-line;"></div>
+    </div>
+</div>
 <script>
     // ==========【唯一修改处】修改这里即可更换起始时间==========
+    // 🔘计时器开关 true=正常运行  false=临时停用计时器
+    let timerSwitch = false;
+
     // 格式：new Date(年份, 月份-1, 日期, 时, 分, 秒)
     // 1月30日 = 月份填0；7月30日 = 月份填6
     const startTimestamp = new Date(2026, 0, 30, 0, 0, 0).getTime();
     // ==========================================================
 
     function updateCountTime() {
+        // 开关关闭就直接退出，停止计时
+        if(!timerSwitch){
+            document.getElementById("timeDiffText").innerText = "暂停使用";
+            return;
+        }
+
         const nowTime = Date.now();
         const totalMs = nowTime - startTimestamp;
 
@@ -1698,6 +1849,52 @@ function calcQuickTotal() {
 
     updateCountTime();
     setInterval(updateCountTime, 1000);
+
+    // ==========词条弹窗逻辑，全部包裹DOMContentLoaded==========
+document.addEventListener('DOMContentLoaded', function(){
+    const tipModal = document.getElementById("tipModal");
+    const tipText = document.getElementById("tipText");
+    const tipCloseBtn = document.getElementById("tipCloseBtn");
+
+    function showTip(key){
+    // 仅快速积分查询页(query)允许弹窗，其他页面点击无效果
+    if(currentPage !== 'query'){
+        return;
+    }
+    let infoText;
+    // 如果tipData里面有这个key，就读取字典内容
+    if(tipData[key]){
+        infoText = tipData[key];
+    }else{
+        // 兼容旧代码：直接把传入的字符串作为显示文本
+        infoText = key;
+    }
+    if(!infoText){
+        return;
+    }
+    tipText.innerText = infoText;
+    tipModal.style.display = "flex";
+}
+
+    function closeTip(){
+        tipModal.style.display = "none";
+    }
+
+    tipModal.addEventListener("click",function(e){
+        if(e.target === tipModal){
+            closeTip();
+        }
+    })
+    tipCloseBtn.addEventListener("click",closeTip);
+
+    //暴露为全局函数，给html onclick调用
+    window.showTip = showTip;
+})
 </script>
 </body>
 </html>
+
+
+
+
+
