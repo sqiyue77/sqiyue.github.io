@@ -412,6 +412,24 @@ input, .box {
   font-weight: bold;
   color: #409eff;
 }
+#tipModal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.65);
+    overflow-y:auto;
+    align-items:center;
+    justify-content:center;
+}
+#tipText{
+    max-height:70vh;
+    overflow-y:auto;
+    padding:16px;
+    box-sizing:border-box;
+}
+.body-lock{
+    overflow:hidden !important;
+}
 
     </style>
 </head>
@@ -433,6 +451,11 @@ input, .box {
          onclick="goPage('query')">快速积分查询</div>
 
     <!-- 第二行 -->
+    <div style="padding:18px 24px;cursor:pointer;font-size:18px;border-bottom:4px solid #000000;"
+         onmouseover="this.style.backgroundColor='#e6f2ff'"
+         onmouseout="this.style.backgroundColor='#ffffff'"
+         onclick="goPage('weapons')">全武器及配件信息</div>
+
     <div style="padding:18px 24px;cursor:pointer;font-size:18px;border-bottom:4px solid #000000;"
          onmouseover="this.style.backgroundColor='#e6f2ff'"
          onmouseout="this.style.backgroundColor='#ffffff'"
@@ -758,7 +781,7 @@ input, .box {
         </tr>
         <tr>
             <td></td>
-            <td><span onclick="showTip('名称：震岳不息杵\n效果：攻击力+80，攻击每命中目标3次后，第4次攻击会召唤年兽王原地持续锤击4次，每次对范围内的目标造成400点额外伤害（可破甲）')"
+            <td><span onclick="showTip('名称：震岳不息杵\n效果：攻击力+80，攻击每命中目标4次后，召唤年兽王原地持续锤击4次，每次对范围内的目标造成400点额外伤害（可破甲）')"
                       style="color:#409eff;cursor:pointer;text-decoration:underline;">震岳不息杵</span></td>
             <td>58888</td>
         </tr>
@@ -823,7 +846,7 @@ input, .box {
         </thead>
         <tbody>
         <tr>
-            <td><span onclick="showTip('名称：星空之刃\n类别：刀斧类武器\n耐久：1500\n攻击力：800\n[近战形态]\n星云：攻击附加200点额外伤害\n星光：手持星刀时，移速+15%（听说有bug，实际加成为25%），蓄力不减移速\n流星：每次攻击后+20%移速（远近均可触发，远程不需要命中目标），持续2秒\n[远程形态]\n星源：蓄力0.25秒（听说的）后本次攻击切换为远程形态，会向指定方向发射一道贯穿剑气，对路径上的目标造成1000点额外伤害。若目标未持有星源buff，则挂上星源buff；反之，则消耗星源buff，追加600点额外伤害\n*材质为星金')"
+            <td><span onclick="showTip('名称：星空之刃\n类别：刀斧类武器\n耐久：1500\n攻击力：800\n[近战形态]\n星云：攻击附加200点额外伤害\n星光：手持星刀时，移速+15%（听说有bug，实际加成为25%），蓄力不减移速\n流星：每次攻击后+20%移速（远近均可触发，若是远程则不需要命中目标），持续2秒\n[远程形态]\n星源：蓄力0.25秒（听说的）后本次攻击切换为远程形态，会向指定方向发射一道贯穿剑气，对路径上的目标造成1000点额外伤害。若目标未持有星源buff，则挂上星源buff；反之，则消耗星源buff，追加600点额外伤害\n*材质为星金')"
                       style="color:#409eff;cursor:pointer;text-decoration:underline;">星空之刃</span></td>
             <td></td>
             <td>128888</td>
@@ -979,7 +1002,7 @@ input, .box {
         </thead>
         <tbody>
         <tr>
-            <td><span onclick="showTip('名称：九霄雷烬\n类别：长枪类武器\n耐久：1000\n攻击力：650\n九霄：攻击会在雷强落地处追加小范围的600点额外伤害\n雷烬：雷枪落地后会停留在原地，每秒持续对周围的敌人造成200点额外伤害和减速，持续5秒，该伤害不可叠加\n急速：蓄力不减移速（还是那句话，限五貌似都有这个效果，只是不一定写进来）\n*材质为鸣金')"
+            <td><span onclick="showTip('名称：九霄雷烬\n类别：长枪类武器\n耐久：1000\n攻击力：650\n九霄：攻击会对目标所在处追加小范围的600点额外伤害\n雷烬：雷枪落地后会停留在原地，每秒持续对周围的敌人造成200点额外伤害和减速，持续5秒，该伤害不可叠加\n急速：蓄力不减移速（还是那句话，限五貌似都有这个效果，只是不一定写进来）\n*材质为鸣金')"
                       style="color:#409eff;cursor:pointer;text-decoration:underline;">九霄雷烬</span></td>
             <td></td>
             <td>98888</td>
@@ -1390,6 +1413,20 @@ input, .box {
         有新限定时，应该会进行更新
     </div>
 </div> <!-- 这是calcB快速查询盒子的结束标签 -->
+
+<div id="page-weapons" class="box hide">
+    <button class="switch-btn" onclick="toggleMenu(event)">🔄</button>
+    <h2 style="margin-top:0;text-align:center;">全武器及配件信息</h2>
+    <div id="weaponContent"></div>
+    <div class="bottom-info">
+        由 <span class="bottom-author">S七月s_</span> 制作，希望真的有用<br>
+        暂时未发现bug，如有遇到可以反馈<br>
+        有新限定时，应该会进行更新
+    </div>
+</div>
+
+
+
 <div id="emptyPage" class="box hide">
     <button class="switch-btn" onclick="toggleMenu(event)">🔄</button>
     <h2 style="margin-top: 0;">暂定为介绍各副本的掉落物情况和敌人信息，有其他想法可以私信</h2>
@@ -1427,15 +1464,101 @@ function toggleMenu(event){
     // 展开/收起菜单
     menu.classList.toggle("hide");
 }
+function renderWeapons(){
+    const container = document.getElementById('weaponContent');
+    if(!container) return;
 
+    let html = "";
+    html += `<div style="margin:30px 0;">
+        <h3 style="text-align:center;font-weight:bold;font-size:22px;color:#222;margin:20px 0;">基础武器</h3>
+
+        <div style="border:1px solid #dcdfe6;border-radius:12px;padding:16px;text-align:center;margin-bottom:24px;">
+    <img src="images/mugun.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">木棍</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：5-15</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：60</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：1木头1麻绳</p>
+        <p style="margin:4px 0;font-size:19px;">配件：不可改造</p>
+        <p style="margin:4px 0;font-size:19px;">被动：无</p>
+        <p style="margin:4px 0;font-size:19px;">获取：在工作台消耗2木头1麻绳制作</p>
+    </div>
+
+    <div style="height:40px;"></div>
+    <img src="images/chuijian.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">吹箭</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：1</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：30</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：2木头1麻绳</p>
+        <p style="margin:4px 0;font-size:19px;">配件：不可改造</p>
+        <p style="margin:4px 0;font-size:19px;">被动：对兔子多造成30点额外伤害和70%减速</p>
+        <p style="margin:4px 0;font-size:19px;">获取：在工作台消耗3木头2麻绳制作</p>
+    </div>
+</div>
+
+    <h3 style="text-align:center;font-weight:bold;font-size:22px;color:#222;margin:40px 0 20px 0;">一星武器</h3>
+    <div style="border:1px solid #dcdfe6;border-radius:12px;padding:16px;text-align:center;margin-bottom:24px;">
+
+        <img src="images/dangong.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">弹弓</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">仅尼克使用</p>
+        <p style="margin:4px 0;font-size:19px;">攻击力：10-15</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：150</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：1麻绳1树枝</p>
+        <p style="margin:4px 0;font-size:19px;">配件：不可改造</p>
+        <p style="margin:4px 0;font-size:19px;">被动：无</p>
+        <p style="margin:4px 0;font-size:19px;">获取：在工作台消耗2木头1麻绳1布料制作</p>
+        <p style="margin:4px 0;font-size:19px;">(！？区区？!)</p>
+    </div>
+</div>
+
+    <h3 style="text-align:center;font-weight:bold;font-size:22px;color:#222;margin:40px 0 20px 0;">二星武器</h3>
+    <div style="border:1px solid #dcdfe6;border-radius:12px;padding:16px;text-align:center;margin-bottom:24px;">
+
+    <img src="images/tiedao.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">铁刀</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：10-30</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：150</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：3生铁1胶带</p>
+        <p style="margin:4px 0;font-size:19px;">
+配件：
+<span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+data-content="<img src='images/jdwb.jpg' style='max-width:220px;'><br><b>胶带握把</b><br>体力消耗-30%，攻击力+5<br>获取：在村庄马叔那里消耗20银币购买">刀柄</span>，
+
+<span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+data-content="<img src='images/jcdr.jpg' style='max-width:220px;'><br><b>锯齿刀刃</b><br>攻击力+5.攻击猪时有35%施加流血<br>猪包括小猪、养殖猪、大猪、花猪<br>流血：触发时收到10点额外伤害，共2次<br>获取：在村庄马叔那里消耗15银币购买">刀刃</span>，
+
+<span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+data-content="<img src='images/ycds.jpg' style='max-width:220px;'><br><b>延长刀身</b><br>攻击范围小范围增加，攻击力+5<br>获取：在森林花鲜紫那里消耗5独角购买<br><br><img src='images/ghds.jpg' style='max-width:220px;'><br><b>钢化刀身</b><br>对甲虫、爆炸甲虫、变异毒蜂多造成100点额外伤害，攻击力+5<br>获取：在迷雾镇迷雾商人那里消耗30银币购买<br>ps：过剧情时会送一个">刀身</span>
+
+</p>
+
+
+
+        <p style="margin:4px 0;font-size:19px;">被动：无</p>
+        <p style="margin:4px 0;font-size:19px;">获取：在工作台消耗15生铁2胶带制作</p>
+    </div>
+
+
+</div>
+
+
+    </div>`;
+
+    container.innerHTML = html;
+}
 // 2. 页面跳转统一逻辑
 function goPage(pageType){
     // 关闭下拉菜单
     document.getElementById("menuList").classList.add("hide");
-    // 所有页面全部先隐藏
+    // 所有页面全部先隐藏（含新增的 page-weapons）
     document.getElementById("calcA").classList.add("hide");
     document.getElementById("calcB").classList.add("hide");
     document.getElementById("emptyPage").classList.add("hide");
+    document.getElementById("page-weapons").classList.add("hide");   // 新增
 
     //记录当前页面
     currentPage = pageType;
@@ -1443,6 +1566,9 @@ function goPage(pageType){
     // 根据选项跳转页面
     if(pageType === 'query'){
         document.getElementById("calcB").classList.remove("hide");
+    }else if(pageType === 'weapons'){                                 // 新增分支
+        document.getElementById("page-weapons").classList.remove("hide");
+        renderWeapons();                                             // 进入武器页时生成内容
     }else if(pageType === 'empty'){
         document.getElementById("emptyPage").classList.remove("hide");
     }else if(pageType === 'home'){
@@ -1450,6 +1576,7 @@ function goPage(pageType){
         document.getElementById("calcA").classList.remove("hide");
     }
 }
+
 
 // 3. 返回主页面（calcA）
 
@@ -1822,7 +1949,7 @@ function calcQuickTotal() {
 <script>
     // ==========【唯一修改处】修改这里即可更换起始时间==========
     // 🔘计时器开关 true=正常运行  false=临时停用计时器
-    let timerSwitch = false;
+    let timerSwitch = true;
 
     // 格式：new Date(年份, 月份-1, 日期, 时, 分, 秒)
     // 1月30日 = 月份填0；7月30日 = 月份填6
@@ -1857,27 +1984,25 @@ document.addEventListener('DOMContentLoaded', function(){
     const tipCloseBtn = document.getElementById("tipCloseBtn");
 
     function showTip(key){
-    // 仅快速积分查询页(query)允许弹窗，其他页面点击无效果
-    if(currentPage !== 'query'){
-        return;
+        let infoText;
+        if(tipData && tipData[key]){
+            infoText = tipData[key];
+        }else{
+            infoText = key;
+        }
+        if(!infoText){
+            return;
+        }
+        tipText.innerHTML = infoText;
+        tipModal.style.display = "flex";
+        //新增：锁定页面滚动
+        document.body.classList.add("body-lock");
     }
-    let infoText;
-    // 如果tipData里面有这个key，就读取字典内容
-    if(tipData[key]){
-        infoText = tipData[key];
-    }else{
-        // 兼容旧代码：直接把传入的字符串作为显示文本
-        infoText = key;
-    }
-    if(!infoText){
-        return;
-    }
-    tipText.innerText = infoText;
-    tipModal.style.display = "flex";
-}
 
     function closeTip(){
         tipModal.style.display = "none";
+        //新增：解锁页面滚动
+        document.body.classList.remove("body-lock");
     }
 
     tipModal.addEventListener("click",function(e){
@@ -1887,13 +2012,23 @@ document.addEventListener('DOMContentLoaded', function(){
     })
     tipCloseBtn.addEventListener("click",closeTip);
 
-    //暴露为全局函数，给html onclick调用
     window.showTip = showTip;
+
+    //事件委托（动态武器卡片弹窗）
+    document.getElementById("weaponContent").addEventListener("click",function(e){
+        const target = e.target.closest('span[data-tip]');
+        if(target){
+            const html = target.getAttribute('data-content');
+            showTip(html);
+        }
+    })
 })
+
+
+
 </script>
 </body>
 </html>
-
 
 
 
