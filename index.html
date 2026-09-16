@@ -1440,6 +1440,7 @@ input, .box {
 
 <script>
     let currentPage = "home";
+
     // 词条弹窗文本库，所有长介绍全部写在这里，支持直接回车换行
 const tipData = {
     lingyu_core:`名称：领域核心
@@ -1523,31 +1524,1086 @@ function renderWeapons(){
         <p style="margin:4px 0;font-size:19px;">攻击力：10-30</p>
         <p style="margin:4px 0;font-size:19px;">耐久：150</p>
         <p style="margin:4px 0;font-size:19px;">修理材料：3生铁1胶带</p>
-        <p style="margin:4px 0;font-size:19px;">
-配件：
+        <p style="margin:4px 0;font-size:19px;">配件：
 <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
-data-content="<img src='images/jdwb.jpg' style='max-width:220px;'><br><b>胶带握把</b><br>体力消耗-30%，攻击力+5<br>获取：在村庄马叔那里消耗20银币购买">刀柄</span>，
-
+data-content="<img src='images/jdwb.jpg' style='max-width:220px;'><br><b>胶带握把</b><br>效果：体力消耗-30%，攻击力+5<br>获取：在希望镇马叔那里消耗20银币购买">刀柄</span>
 <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
-data-content="<img src='images/jcdr.jpg' style='max-width:220px;'><br><b>锯齿刀刃</b><br>攻击力+5.攻击猪时有35%施加流血<br>猪包括小猪、养殖猪、大猪、花猪<br>流血：触发时收到10点额外伤害，共2次<br>获取：在村庄马叔那里消耗15银币购买">刀刃</span>，
-
+data-content="<img src='images/jcdr.jpg' style='max-width:220px;'><br><b>锯齿刀刃</b><br>效果：攻击力+5，攻击猪时有35%概率施加流血<br>猪包括小猪、养殖猪、大猪、花猪<br>流血：触发时受到10点额外伤害，共2次<br>获取：在希望镇马叔那里消耗15银币购买">刀刃</span>
 <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
-data-content="<img src='images/ycds.jpg' style='max-width:220px;'><br><b>延长刀身</b><br>攻击范围小范围增加，攻击力+5<br>获取：在森林花鲜紫那里消耗5独角购买<br><br><img src='images/ghds.jpg' style='max-width:220px;'><br><b>钢化刀身</b><br>对甲虫、爆炸甲虫、变异毒蜂多造成100点额外伤害，攻击力+5<br>获取：在迷雾镇迷雾商人那里消耗30银币购买<br>ps：过剧情时会送一个">刀身</span>
-
-</p>
-
-
+data-content="<img src='images/ycds.jpg' style='max-width:220px;'><br><b>延长刀身</b><br>效果：攻击范围小范围增加，攻击力+5<br>获取：在森林花鲜紫那里消耗5独角购买<br><br><img src='images/ghds.jpg' style='max-width:220px;'><br><b>钢化刀身</b><br>效果：对甲虫、爆炸甲虫、变异毒蜂多造成100点额外伤害，攻击力+5<br>获取：在迷雾镇迷雾商人那里消耗30银币购买<br>ps：过剧情时会送一个">刀身</span>
 
         <p style="margin:4px 0;font-size:19px;">被动：无</p>
         <p style="margin:4px 0;font-size:19px;">获取：在工作台消耗15生铁2胶带制作</p>
+        <p style="margin:4px 0;font-size:19px;">满配面板：
+<span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+data-content="<b>满配面板(只写配件影响的部分)</b><br>最大攻击力：45<br>体力消耗：30 ->21<br>攻击猪时有35%概率对其施加流血，共造成20点额外伤害<br>1️⃣攻击甲虫、爆炸甲虫、变异毒蜂时多造成100点额外伤害<br>-->(选择钢化刀身时)<br>2️⃣攻击距离>1.6<br>-->(选择延长刀身时)<br>ps：我也不知道具体加多少">详情</span>
+</p>
     </div>
 
+    <div style="height:40px;"></div>
+    <img src="images/tiepigong.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">铁皮弓</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：15-40</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：100</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：3生铁1麻绳</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+<span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+data-content="<img src='images/fqgs.jpg' style='max-width:220px;'><br><b>反曲弓身</b><br>效果：攻击力+10，射程+15%<br>获取：在希望镇马叔那里消耗20银币购买">弓身</span>
+<span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+data-content="<img src='images/fhgx.jpg' style='max-width:220px;'><br><b>复合弓弦</b><br>效果：攻击力+10，体力消耗-70%<br>获取：在希望镇马叔那里消耗30银币购买">弓弦</span>
+<span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+data-content="<img src='images/mpjt.jpg' style='max-width:220px;'><br><b>毛皮箭台</b><br>效果：攻击力+10，精准度+100%<br>获取：在希望镇马叔那里消耗20银币购买<br><br><img src='images/zlpwm.jpg' style='max-width:220px;'><br><b>蚊鸣</b><br>效果：攻击命中时清除敌人身上的持续回血buff<br>*注：只能清除持续回血的buff，无法克制一次性回血，其次该持续回血必须以buff的形式存在，否则也无法清除<br>获取：击败迷雾镇联机副本内boss蚊鸣掉落<br><img src='images/bosswm.jpg' style='max-width:220px;'>">箭托</span>
+<span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+data-content="<img src='images/dlzj.jpg' style='max-width:220px;'><br><b>打猎组件</b><br>效果：攻击力+10，攻击牛、羊、鹿、独角兽时多造成100点额外伤害<br>*可触发的敌人有羊、绵羊、变异牛、大角兽、独角兽<br>获取：在迷雾镇迷雾商人那里消耗30银币购买">组件</span>
 
+        <p style="margin:4px 0;font-size:19px;">被动：无</p>
+        <p style="margin:4px 0;font-size:19px;">获取：在工作台消耗8生铁2麻绳2胶带制作</p>
+        <p style="margin:4px 0;font-size:19px;">满配面板：
+<span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+data-content="<b>满配面板(只写配件影响的部分)</b><br>体力消耗：30 ->9<br>攻击距离：7 ->8.05<br>攻击牛、羊、鹿、独角兽时多造成100点额外伤害<br>1️⃣最大攻击力：80<br>精准度+100%<br>-->(选择毛皮箭台时)<br>2️⃣最大攻击力：70<br>攻击命中时清除敌人身上的持续回血buff<br>-->(选择蚊鸣时)">详情</span></p>
+    </div>
+
+    <div style="height:40px;"></div>
+<img src="images/liegong.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+<p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">猎弓</p>
+<div style="display:inline-block;text-align:left;">
+    <p style="margin:4px 0;font-size:19px;">攻击力：10-30</p>
+    <p style="margin:4px 0;font-size:19px;">耐久：100</p>
+    <p style="margin:4px 0;font-size:19px;">修理材料：3生铁1麻绳</p>
+    <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/fqgs.jpg' style='max-width:220px;'><br><b>反曲弓身</b><br>效果：攻击力+10，射程+15%<br>获取：在希望镇马叔那里消耗20银币购买">弓身</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/fhgx.jpg' style='max-width:220px;'><br><b>复合弓弦</b><br>效果：攻击力+10，体力消耗-70%<br>获取：在希望镇马叔那里消耗30银币购买">弓弦</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/mpjt.jpg' style='max-width:220px;'><br><b>毛皮箭台</b><br>效果：攻击力+10，精准度+100%<br>获取：在希望镇马叔那里消耗20银币购买<br><br><img src='images/zlpwm.jpg' style='max-width:220px;'><br><b>蚊鸣</b><br>效果：攻击命中时清除敌人身上的持续回血buff<br>*注：只能清除持续回血的buff，无法克制一次性回血，其次该持续回血必须以buff的形式存在，否则也无法清除<br>获取：击败迷雾镇联机副本内boss蚊鸣掉落<br><img src='images/bosswm.jpg' style='max-width:220px;'>">箭托</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/dlzj.jpg' style='max-width:220px;'><br><b>打猎组件</b><br>效果：攻击力+10，攻击牛、羊、鹿、独角兽时多造成100点额外伤害<br>*可触发的敌人有羊、绵羊、变异牛、大角兽、独角兽<br>获取：在迷雾镇迷雾商人那里消耗30银币购买">组件</span>
+    </p>
+    <p style="margin:4px 0;font-size:19px;">被动：攻击牛、羊、鹿、独角兽时多造成50点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">获取：在森林花鲜紫处消耗1花蕊购买</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>体力消耗：30 ->9<br>攻击距离：7 ->8.05<br>攻击牛、羊、鹿、独角兽时多造成<b>150</b>点额外伤害(把被动算进去了)<br>1️⃣最大攻击力：70<br>精准度+100%<br>-->(选择毛皮箭台时)<br>2️⃣最大攻击力：60<br>攻击命中时清除敌人身上的持续回血buff<br>-->(选择蚊鸣时)">详情</span>
+    </p>
+</div>
 </div>
 
+    <h3 style="text-align:center;font-weight:bold;font-size:22px;color:#222;margin:40px 0 20px 0;">三星武器</h3>
+    <div style="border:1px solid #dcdfe6;border-radius:12px;padding:16px;text-align:center;margin-bottom:24px;">
 
-    </div>`;
+    <img src="images/huochong.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">火铳</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：120-360</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：100</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：4生铁1胶带</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/hcwb.jpg' style='max-width:220px;'><br><b>火铳握把</b><br>效果：攻击力+30，体力消耗-25%<br>获取：在迷雾镇迷雾商人那里消耗50银币购买">握把</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/hcssq.jpg' style='max-width:220px;'><br><b>火铳收束器</b><br>效果：攻击力+30，射程+15%<br>获取：在迷雾镇迷雾商人那里消耗40银币购买">枪口</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/hyfsq.jpg' style='max-width:220px;'><br><b>火焰喷射器</b><br>效果：攻击力+30，攻击会对目标施加燃烧<br>燃烧：触发时受到40点额外伤害，共2次<br>获取：镇长篇开启后，在希望镇摊贩那里消耗500银币购买或是在王老五那里消耗239钻石购买">组件</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/hjcg.jpg' style='max-width:220px;'><br><b>合金铳管</b><br>效果：攻击不再消耗耐久<br>获取：镇长篇开启后，在希望镇摊贩那里消耗500银币购买">铳管</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：无</p>
+    <p style="margin:4px 0;font-size:19px;">获取：在工作台消耗20生铁2短水管3胶带制作</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>最大攻击力：450<br>*注：这里的攻击力是三颗子弹都打到的情况，最高确实是450，但最低不确定<br>攻击距离：4 ->4.6<br>体力消耗：80 ->60<br>攻击会对目标施加燃烧">详情</span>
+    </p>
+</div>
 
+    <div style="height:40px;"></div>
+    <img src="images/gangnu.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">钢弩</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：40-120</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：200</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：5五金件2胶带</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/hjgp.jpg' style='max-width:220px;'><br><b>合金弓片</b><br>效果：攻击力+40<br>获取：镇长篇开启后，在希望镇摊贩那里消耗5鳄龟壳+50银币购买">弓身</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/gjmznt.jpg' style='max-width:220px;'><br><b>高级木制弩托</b><br>效果：攻击力+40，体力消耗-50%<br>获取：镇长篇开启后，在希望镇摊贩那里消耗5铠鼠甲+60银币购买">弩托</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/nmzj.jpg' style='max-width:220px;'><br><b>弩瞄准镜</b><br>效果：攻击力+40，精准度+50%，攻击命中时有概率多造成100点额外伤害<br>获取：镇长篇开启后，在希望镇摊贩那里消耗200银币购买<br><br><img src='images/zlpwm.jpg' style='max-width:220px;'><br><b>蚊鸣</b><br>效果：攻击命中时清除敌人身上的持续回血buff<br>*注：只能清除持续回血的buff，无法克制一次性回血，其次该持续回血必须以buff的形式存在，否则也无法清除<br>获取：击败迷雾镇联机副本内boss蚊鸣掉落<br><img src='images/bosswm.jpg' style='max-width:220px;'>">瞄准镜</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/hjns.jpg' style='max-width:220px;'><br><b>合金弩身</b><br>效果：攻击不再消耗耐久<br>获取：镇长篇开启后，在希望镇摊贩那里消耗500银币购买">弩身</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：无</p>
+    <p style="margin:4px 0;font-size:19px;">获取：镇长篇开启后，在希望镇摊贩那里消耗120银币购买(加油站里可以拿一把)</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>体力消耗：30 ->15<br>攻击不再消耗耐久<br>1️⃣最大攻击力：240<br>精准度+50%<br>攻击命中时有概率多造成100点额外伤害<br>-->(选择弩瞄准镜时)<br>2️⃣最大攻击力：200<br>攻击命中时清除敌人身上的持续回血buff<br>-->(选择蚊鸣时)">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/gangchui.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">钢锤</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：30-80</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：300</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：5铸钢2胶带</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/gcwb.jpg' style='max-width:220px;'><br><b>钢锤握把</b><br>效果：攻击力+20，体力消耗-30%，后摇-30%<br>获取：镇长篇开启后，在希望镇摊贩那里消耗5棘刺+40银币购买">握把</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/jcct.jpg' style='max-width:220px;'><br><b>尖刺锤头</b><br>效果：攻击力+50，攻击鳄龟、铠鼠时多造成100点额外伤害(可破甲)<br>获取：镇长篇开启后，在希望镇摊贩那里消耗5蜂蜜+100银币购买">锤头</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/cbcg.jpg' style='max-width:220px;'><br><b>长柄锤杆</b><br>效果：攻击力+30，攻击距离+30%<br>获取：镇长篇开启后，在希望镇摊贩那里消耗1蝴蝶壳+30银币购买">锤身</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：破甲，可以对甲壳类敌人造成伤害</p>
+    <p style="margin:4px 0;font-size:19px;">获取：镇长篇开启后，在希望镇摊贩那里消耗120银币购买(加油站里可以拿一把)</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>最大攻击力：180<br>体力消耗：40 ->28<br>攻击距离：2 ->2.6<br>后摇-30%<br>攻击鳄龟、铠鼠时多造成100点额外伤害(可破甲)">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/jingguai.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">警拐</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：40-160</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：300</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：2粘合剂2胶带</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/pgsb.jpg' style='max-width:220px;'><br><b>皮革手柄</b><br>效果：攻击力+20，体力消耗-30%<br>获取：夜晚时，在中心城区叛军营地下方、联机副本旁边的叛军老六那里消耗2长刺+66银币购买(我是我。闭着火)">手柄</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：无</p>
+    <p style="margin:4px 0;font-size:19px;">获取：在中心城区
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/jcj1.jpg' style='max-width:220px;'><br>在桌子上<br><img src='images/jcj2.jpg' style='max-width:320px;max-height:400px;'><br>小地图位置如图">警察局指定位置</span>
+              拾取
+    </p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>最大攻击力：180<br>体力消耗：20 ->14">详情</span>
+    </p>
+    <p style="margin:4px 0;font-size:19px;">(呵，三星的区中王来了)</p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/xiaofangfu.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">消防斧</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：80-200</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：300</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：2粘合剂2胶带</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/ssfb.jpg' style='max-width:220px;'><br><b>舒适斧柄</b><br>效果：攻击力+20，体力消耗-30%<br>获取：<br>1️⃣夜晚时，在中心城区叛军营地下方、联机副本旁边的叛军老六那里消耗2长刺+66银币购买(我是我。闭着火)<br>2️⃣在消防局办公楼指定位置拾取<br><img src='images/xfj1.jpg' style='width:100%;max-width:350px;'><br>在厕所尽头这个坑里">斧柄</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/srft.jpg' style='max-width:220px;'><br><b>双刃斧头</b><br>效果：攻击力+20，蓄力时间-20%<br>获取：<br>1️⃣夜晚时，在中心城区叛军营地下方、联机副本旁边的叛军老六那里消耗2长刺+66银币购买(我是我。闭着火)<br>2️⃣在消防局办公楼指定位置拾取<br><img src='images/xfj2.jpg' style='width:100%;max-width:350px;'><br>在这个房间的货架上">斧刃</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：攻击感染者时多造成200点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">获取：在
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/zxcq1.jpg' style='width:100%;max-width:350px;'><br>在柜子里，需要走下水道过来，进下水道后先往下走，然后往左走到尽头<br><img src='images/zxcq2.jpg' style='max-width:320px;max-height:400px;'><br>小地图位置如图">中心城区指定位置</span>
+              拾取或
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/xfj2.jpg' style='width:100%;max-width:350px;'><br>在这个房间的货架上">消防局办公楼指定位置</span>
+    </p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>最大攻击力：240<br>体力消耗：30 ->21<br>蓄力时间：0.7 ->0.56">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/langyabang.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">狼牙棒</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：72-180</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：300</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：2粘合剂2胶带</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/xjgs.jpg' style='max-width:220px;'><br><b>橡胶棍身</b><br>效果：攻击力+20，体力消耗减-30%<br>获取：夜晚时，在中心城区叛军营地下方、联机副本旁边的叛军老六那里消耗2长刺+66银币购买">棍身</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/dggt.jpg' style='max-width:220px;'><br><b>倒钩棍头</b><br>效果：攻击力+20，后摇-30%<br>获取：夜晚时，在中心城区叛军营地下方、联机副本旁边的叛军老六那里消耗2长刺+66银币购买">棍头</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;"> 1️⃣攻击命中时有概率施加流血</p>
+    <p style="margin:4px 0;font-size:19px;">  *流血：触发时受到40点额外伤害，共2次</p>
+    <p style="margin:4px 0;font-size:19px;"> 2️⃣攻击触手类敌人时多造成200点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">获取：在中心城区
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/zxcq3.jpg' style='width:100%;max-width:350px;'><br>在废墟的这个位置，比较靠近左边的墙">中心别墅废墟指定位置</span>
+              拾取
+    </p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>最大攻击力：220<br>体力消耗：30 ->21<br>后摇-30%">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/tieqiang.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">铁枪</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：15-35</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：150</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：5生铁1胶带</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/jdwb.jpg' style='max-width:220px;'><br><b>胶带握把</b><br>效果：体力消耗-30%，攻击力+5<br>获取：在希望镇马叔那里消耗20银币购买">握把</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/jcdr.jpg' style='max-width:220px;'><br><b>锯齿刀刃</b><br>效果：攻击力+5，攻击猪时有35%概率施加流血<br>猪包括小猪、养殖猪、大猪、花猪<br>流血：触发时受到10点额外伤害，共2次<br>获取：在希望镇马叔那里消耗15银币购买<br><br><img src='images/glqt.jpg' style='max-width:220px;'><br><b>钩镰枪头</b><br>效果：攻击力+10，小幅增加攻击距离<br>获取：在废旧社区右边房子的地下室拾取，需要有狗<br><img src='images/grsq1.jpg' style='width:100%;max-width:350px;'><br><img src='images/grsq2.jpg' style='width:100%;max-width:350px;'><br>入口(需要用狗开启)<br><br><img src='images/scjt.jpg' style='max-width:220px;'><br><b>三叉戟头</b><br>效果：攻击力+50，攻击附加80点额外伤害<br>获取，：镇长篇开启后，在希望镇王老五那里消耗180钻石购买">枪头</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/ghds.jpg' style='max-width:220px;'><br><b>钢化刀身</b><br>效果：对甲虫、爆炸甲虫、变异毒蜂多造成100点额外伤害，攻击力+5<br>获取：在迷雾镇迷雾商人那里消耗30银币购买">枪刃</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/hjqg.jpg' style='max-width:220px;'><br><b>合金枪杆</b><br>效果：攻击力+ 30-100，攻击不再消耗耐久<br>获取：镇长篇开启后，在希望镇摊贩那里消耗100银币购买">枪杆</span>
+        </p>
+        <p style="margin:4px 0;font-size:19px;">被动：攻击命中时为敌人叠加一层印记，叠满三层时清除层数追加35点额外伤害</p>
+        <p style="margin:4px 0;font-size:19px;">获取：在工作台消耗1铁刀3木头1胶带制作(需氪金解锁图纸)</p>
+        <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>体力消耗：25 ->17.5<br>对甲虫、爆炸甲虫、变异毒蜂多造成100点额外伤害<br>攻击不再消耗耐久<br>注：下述的最小攻击力不明，仅作参考<br>1️⃣攻击力：60-150<br>攻击猪时有35%概率施加流血<br>-->(选择锯齿刀刃时)<br>2️⃣攻击力：65-155<br>攻击距离小幅增加<br>-->(选择钩镰枪头时)<br>3️⃣攻击力：？-195<br>攻击附加80点额外伤害<br>-->(选择三叉戟头时)">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/shizinu.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">十字弩</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：60-180</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：300</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：不知道，我没有</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/hjgp.jpg' style='max-width:220px;'><br><b>合金弓片</b><br>效果：攻击力+40<br>获取：镇长篇开启后，在希望镇摊贩那里消耗5鳄龟壳+50银币购买">弓身</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/gjmznt.jpg' style='max-width:220px;'><br><b>高级木制弩托</b><br>效果：攻击力+40，体力消耗-50%<br>获取：镇长篇开启后，在希望镇摊贩那里消耗5铠鼠甲+60银币购买">弩托</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/nmzj.jpg' style='max-width:220px;'><br><b>弩瞄准镜</b><br>效果：攻击力+40，精准度+50%，攻击命中时有概率多造成100点额外伤害<br>获取：镇长篇开启后，在希望镇摊贩那里消耗200银币购买<br><br>不知道能不能用蚊鸣">瞄准镜</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击有概率多造成100点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣攻击命中时施加短暂的减速</p>
+    <p style="margin:4px 0;font-size:19px;">获取：购买新手包或进阶包后，白天时在村庄的西瓜大王处购买畅玩包后解锁图纸，制作消耗的材料不知道</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>体力消耗减50%，具体多少不知道<br>最大攻击力：300<br>精准度+50%<br>攻击命中时有概率多造成100点额外伤害(不确定是不是和被动一起触发，因此未计算在内)">详情</span>
+    </p>
+    <p style="margin:4px 0;font-size:19px;">(加强版钢弩，但死贵还不能装弩身，几乎无人在意这武器)</p>
+</div>
+</div>
+
+    <h3 style="text-align:center;font-weight:bold;font-size:22px;color:#222;margin:40px 0 20px 0;">四星武器</h3>
+    <div style="border:1px solid #dcdfe6;border-radius:12px;padding:16px;text-align:center;margin-bottom:24px;">
+
+    <img src="images/buqiang.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">步枪</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：480</p>
+        <p style="margin:4px 0;font-size:19px;">类别：步枪(枪械)类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：500</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：2粘合剂3胶带</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/bqwb.jpg' style='max-width:220px;'><br><b>步枪握把</b><br>效果：攻击力+40，精准度+50%<br>获取：夜晚时，在中心城区叛军营地下方、联机副本旁边的叛军老六那里消耗666银币购买(我是我。闭着火)">握把</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/bqqk.jpg' style='max-width:220px;'><br><b>步枪枪口</b><br>效果：攻击力+160，射程+25%<br>获取：镇长篇开启后，在希望镇摊贩那里消耗800银币购买">枪口</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/bqqt.jpg' style='max-width:220px;'><br><b>步枪枪托</b><br>效果：攻击力+40，体力消耗-30%<br>获取：在中心城区的叛军营地内的瞭望塔里拾取(建议走下水道进入营地)<br><img src='images/pjyd1.jpg' style='width:100%;max-width:350px;'>">枪托</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/bqmzj.jpg' style='max-width:220px;'><br><b>步枪瞄准镜</b><br>效果：蓄力时间-30%，攻击有概率附加480点额外伤害<br>获取：在中心城区警察局内的枪械库里，完成打靶挑战后拾取<br><img src='images/jcj3.jpg' style='width:100%;max-width:350px;'>">瞄准镜</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：无</p>
+    <p style="margin:4px 0;font-size:19px;">获取：在军事基地内拾取，我懒得贴图了，正常玩能找到的</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：720<br>体力消耗：40 ->28<br>攻击距离：10 ->12.5<br>蓄力时间：0.5 ->0.35<br>精准度+50%<br>攻击有概率附加480点额外伤害">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/shazhudao.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">鲨猪刀</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：80-200</p>
+        <p style="margin:4px 0;font-size:19px;">类别：刀斧类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：300</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：1鲨魜鳍3粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：不可改造</p>
+    <p style="margin:4px 0;font-size:19px;">被动：攻击命中敌人时叠加1层流血，最多10层</p>
+    <p style="margin:4px 0;font-size:19px;">^流血：触发时，受到(5*流血层数)点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇海岛联机副本内的鲨魜猪心小概率掉落，我懒得贴图了</p>
+        <p style="margin:4px 0;font-size:19px;">ps：可分解为3鲨魜鳍1骨骼</p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/xiandanqiang.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">霰弹枪</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：360-1080</p>
+        <p style="margin:4px 0;font-size:19px;">类别：枪械类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：500</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：2粘合剂3胶带</p>
+        <p style="margin:4px 0;font-size:19px;">配件：不可改造</p>
+    <p style="margin:4px 0;font-size:19px;">被动：无</p>
+    <p style="margin:4px 0;font-size:19px;">获取：镇长篇开启后，收集
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/pjyd2.jpg' style='width:100%;max-width:350px;'><br>在桌子上，需要先击败看守的叛军首领(建议走下水道进入营地)">飞机模型</span>
+              和
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/jcj4.jpg' style='width:100%;max-width:350px;'><br>在面前这个柜子上，位置在中心城区警察局办公楼右下角的房间">航母模型</span>
+              后在希望镇马叔那里购买
+    </p>
+        <p style="margin:4px 0;font-size:19px;">ps：子弹只能用钻石买</p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/shouqiang.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">手枪</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：320</p>
+        <p style="margin:4px 0;font-size:19px;">类别：手枪(枪械)类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：500</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：2粘合剂2胶带</p>
+        <p style="margin:4px 0;font-size:19px;">配件：不可改造</p>
+    <p style="margin:4px 0;font-size:19px;">获取：在中心城区警察局枪械库
+    <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/jcj5.jpg' style='width:100%;max-width:350px;'><br>在面前的箱子里，需要先打赢旁边联机副本内的火焰和液氮拿到钥匙才能开门<br><img src='images/huoyan.jpg' style='width:100%;max-width:350px;'><br><img src='images/yedan.jpg' style='width:100%;max-width:350px;'>">指定位置</span>
+              拾取
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/gugong.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">骨弓</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：50</p>
+        <p style="margin:4px 0;font-size:19px;">类别：弓弩类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：300</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：1粘合剂2胶带</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/zzwy.jpg' style='max-width:220px;'><br><b>蜘蛛王眼</b><br>效果：攻击力+50，精准度+70%，射程+50%<br>获取：村庄联机副本内boss蜘蛛王掉落<br><img src='images/zzw.jpg' style='width:100%;max-width:350px;'><br><br>这里也可以选择蚊鸣配件，但你都玩骨弓了就老老实实用蜘蛛王眼吧">瞄准镜</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/hy.jpg' style='max-width:220px;'><br><b>火焰</b><br>效果：攻击有概率施加燃烧<br>*燃烧：触发时受到40点额外伤害，共2次<br>获取：警察局联机副本内boss火焰掉落<br><img src='images/huoyan.jpg' style='width:100%;max-width:350px;'>">火焰孔</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/yd.jpg' style='max-width:220px;'><br><b>液氮</b><br>效果：攻击有概率施加减速<br>获取：警察局联机副本内boss火焰掉落<br><img src='images/yedan.jpg' style='width:100%;max-width:350px;'>">液氮孔</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：每次攻击发射5发散射箭矢</p>
+    <p style="margin:4px 0;font-size:19px;">获取：在火力发电站击败骨弓掉落</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：100<br>攻击距离：7 ->10.5<br>精准度+70%">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/wahaogong.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">蛙好弓</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：200-500</p>
+        <p style="margin:4px 0;font-size:19px;">类别：弓弩类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：300</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：3零件箱1粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/wj.jpg' style='max-width:220px;'><br><b>五金</b><br>效果：攻击力+10，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1响铃+5黄帽子兑换，响铃由响尾蛇掉落，数量有限<br><img src='images/xiangweishe.jpg' style='width:100%;max-width:350px;'>">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tcwhg.jpg' style='max-width:220px;'><br><b>[涂层]蛙好弓</b><br>效果：攻击力+50，体力消耗-10%<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/whj.jpg' style='max-width:220px;'><br><b>蛙好镜</b><br>效果：攻击力+100，攻击有50%概率多造成300点额外伤害<br>获取：限时积分商店消耗8888积分兑换(上次返场为25年的元旦)">三配</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/wmy.jpg' style='max-width:220px;'><br><b>蛙魔眼</b><br>效果：攻击力+150，攻击附加减速，攻击距离+15%，精准度提高<br>获取：宝藏岛二阶boss魔鬼蛙掉落<br><img src='images/moguiwa.jpg' style='width:100%;max-width:350px;'>">四配</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣：攻击命中时有20%概率施加中毒</p>
+    <p style="margin:4px 0;font-size:19px;">*中毒：每秒受到100点额外伤害，持续3秒</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣攻击蛙、蜥蜴、蚊虫时多造成400点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">获取：限时666币转盘抽取，非保底物品(上次返场为25年的元旦)</p>
+    <p style="margin:4px 0;font-size:19px;">(大佬大佬，我刷了114514只一箭双蛙怎么没有掉蛙好弓)</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：510-810<br>攻击距离：7 ->8.05<br>散射角度20-5<br>后摇-10%<br>蓄力时间：0.5 ->0.45<br>体力消耗：20 ->17<br>攻击有50%概率多造成300点额外伤害<br><br>ps：上述数据由b站up主吉恩上将测试得出">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/kaishandao.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">开山刀</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：115-288</p>
+        <p style="margin:4px 0;font-size:19px;">类别：刀斧类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：1000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：10零件箱3粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/zhj.jpg' style='max-width:220px;'><br><b>振合金</b><br>效果：攻击力+10，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1美丽的芯+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tcksd.jpg' style='max-width:220px;'><br><b>[涂层]开山刀</b><br>效果：攻击力+50，体力消耗-10%<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/yteb.jpg' style='max-width:220px;'><br><b>一头二臂</b><br>效果：攻击感染者时多造成100点额外伤害<br>获取：中心城区叛军营地下方的联机副本内的二阶boss一头二臂5%概率掉落<br><img src='images/bossyteb.jpg' style='width:100%;max-width:350px;'>">三配</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：攻击感染者时多造成200点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇左上角120币转盘抽取，保底物品</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：165-338<br>后摇-10%<br>蓄力时间：0.6 ->0.54<br>体力消耗：20 ->18<br>攻击感染者时多造成300点额外伤害(计入被动)">详情</span>
+    </p>
+    <p style="margin:4px 0;font-size:19px;">铭记26年周年庆：开山刀nb</p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/ngejdao.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">尼格尔军刀</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：105-260</p>
+        <p style="margin:4px 0;font-size:19px;">类别：刀斧类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：1000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：10零件箱3粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/zhj.jpg' style='max-width:220px;'><br><b>振合金</b><br>效果：攻击力+10，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1美丽的芯+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tcngejd.jpg' style='max-width:220px;'><br><b>[涂层]尼格尔军刀</b><br>效果：攻击力+26，体力消耗-10%<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/gg.jpg' style='max-width:220px;'><br><b>光棍</b><br>效果：攻击附加60点额外伤害<br>获取：游园镇联机副本105车间boss卡兹小概率掉落<br><img src='images/kz.jpg' style='width:100%;max-width:350px;'>">三配</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/dj.jpg' style='max-width:220px;'><br><b>电锯</b><br>效果：攻击触手类敌人时多造成200点额外伤害<br>获取：山寨联机副本内的二阶boss电锯惊魂小概率掉落或在港口-实验岛试炼商店消耗5个二阶试炼币兑换<br><img src='images/djjh.jpg' style='width:100%;max-width:350px;'>">四配</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击命中时施加流血，持续3秒</p>
+    <p style="margin:4px 0;font-size:19px;">*流血：触发时受到60点额外伤害，但3秒内只触发2次</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣攻击触手类敌人和嗨星时多造成200点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇右下角80币转盘抽取，保底物品</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：141-296<br>后摇-10%<br>蓄力时间：0.5 ->0.45<br>体力消耗：18 ->16.2<br>攻击附加60点额外伤害，若为触手类敌人则多造成400点额外伤害(计入被动)">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/wujianbuchui.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">无坚不锤</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：160-360</p>
+        <p style="margin:4px 0;font-size:19px;">类别：锤类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：1000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：10零件箱3粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/gj.jpg' style='max-width:220px;'><br><b>刚金</b><br>效果：攻击力+20，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1美丽的芯+5黄帽子兑换或港口-实验岛试炼商店消耗1个三阶试炼币兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tcwjbc.jpg' style='max-width:220px;'><br><b>[涂层]无坚不锤</b><br>效果：攻击力+40，体力消耗-10%<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/cttx.jpg' style='max-width:220px;'><br><b>锤头叹蜥</b><br>效果：攻击力+100，蓄力时间-10%<br>获取：感染社区-蚁穴兵封王座第5期蜥蜴族关底boss蜥蜴王掉落或港口-实验岛试炼商店消耗3个二阶试炼币兑换<br><img src='images/xyw.jpg' style='width:100%;max-width:350px;'>">三配</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击附加100点额外伤害(可破甲)</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣随从使用时有60%概率连续攻击</p>
+    <p style="margin:4px 0;font-size:19px;">*️⃣破甲，可对甲壳类敌人造成伤害</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇右上角120币转盘抽取，保底物品</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：320-520<br>后摇-10%<br>蓄力时间：0.8 ->0.64<br>体力消耗：35 ->31.5">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/shangfangbaojian.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">尚方宝剑</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：85-260</p>
+        <p style="margin:4px 0;font-size:19px;">类别：棍棒类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：1000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：10零件箱3粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/cj.jpg' style='max-width:220px;'><br><b>丑金</b><br>效果：攻击力+10，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1微硬处理器+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/xyj.jpg' style='max-width:220px;'><br><b>咸鱼脚</b><br>效果：攻击海怪时多造成200点额外伤害<br>获取：港口-游轮联机副本内的boss鲨连跳小概率掉落(后期地图里好像可以捡一个)<br><img src='images/slt.jpg' style='width:100%;max-width:350px;'>">三配</span>
+    </p>
+    <p style="margin:4px 0;font-size:19px;">被动：攻击有约20%概率多造成444点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇右下角80币转盘抽取，保底物品</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：95-270<br>后摇-10%<br>蓄力时间：0.5 ->0.45<br>攻击海怪时多造成200点额外伤害">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/dianxianergan.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">电馅儿杆</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：80-216</p>
+        <p style="margin:4px 0;font-size:19px;">类别：棍棒类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：1000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：10零件箱3粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/sj.jpg' style='max-width:220px;'><br><b>神金</b><br>效果：攻击力+10，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1红帽子+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tcdxeg.jpg' style='max-width:220px;'><br><b>[涂层]电馅儿杆</b><br>效果：攻击力+21，体力消耗-10%<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/dr.jpg' style='max-width:220px;'><br><b>电熔</b><br>效果：攻击附加50点额外伤害<br>获取：游园镇联机副本101车间boss瓦乌姆小概率掉落<br><img src='images/wwm.jpg' style='width:100%;max-width:350px;'>">三配</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/ddly.jpg' style='max-width:220px;'><br><b>电动轮蚁</b><br>效果：攻击力+100，攻击机械类敌人时多造成200点额外伤害<br>获取：感染社区-蚁穴三层二阶boss电动轮蚁掉落或港口-实验岛试炼商店消耗2个二阶试炼币兑换<br><img src='images/bossddly.jpg' style='width:100%;max-width:350px;'>">四配</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击命中时施加3秒约50%减速</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣攻击机械类敌人时多造成200点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇左下角300币转盘抽取，非保底物品</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：211-347<br>后摇-10%<br>蓄力时间：0.5 ->0.45<br>体力消耗：18 ->16.2<br>攻击附加50点额外伤害，若为机械类敌人则多造成400点额外伤害(计入被动)">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/yingyuanbang.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">应援棒</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：300-450</p>
+        <p style="margin:4px 0;font-size:19px;">类别：棍棒类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：1000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：10零件箱3粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/mj.jpg' style='max-width:220px;'><br><b>鸣金</b><br>效果：攻击力+10，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1美丽的芯+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tcyyb.jpg' style='max-width:220px;'><br><b>[涂层]应援棒</b><br>效果：攻击力+30，体力消耗-10%<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/spxp.jpg' style='max-width:220px;'><br><b>射频芯片</b><br>效果：攻击附加100点额外伤害<br>获取：限时商店兑换">三配</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/yydcc.jpg' style='max-width:220px;'><br><b>应援电池仓</b><br>效果：攻击力+10<br>获取：限时商店兑换">四配</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击变为发射一个可贯穿敌人的音符</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣蓄力不减移速</p>
+    <p style="margin:4px 0;font-size:19px;">3️⃣每次攻击叠加一层buff，每层+2%移速和1%攻击力，最多5层</p>
+    <p style="margin:4px 0;font-size:19px;">获取：限时商店兑换</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：350-500<br>后摇-10%<br>蓄力时间：0.4 ->0.36<br>体力消耗：20 ->18<br>攻击附加100点额外伤害">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/hudiedao.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">蝴蝶刀</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：160-240</p>
+        <p style="margin:4px 0;font-size:19px;">类别：匕首类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：1000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：10零件箱3粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/meij.jpg' style='max-width:220px;'><br><b>美金</b><br>效果：攻击力+10，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1央伟达显卡+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tchdd.jpg' style='max-width:220px;'><br><b>[涂层]蝴蝶刀</b><br>效果：攻击力+40，体力消耗-10%<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/yx.jpg' style='max-width:220px;'><br><b>蚁腺</b><br>效果：攻击附加100点额外伤害<br>获取：在感染社区-蚁穴的工匠那里消耗3个蚁鞭兑换，蚁鞭由蚁防烷蚁掉落<br><img src='images/yfwy.jpg' style='width:100%;max-width:350px;'>">三配</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/swdy.jpg' style='max-width:220px;'><br><b>蛇王毒牙</b><br>效果：攻击力+40，攻击距离+30%，攻击有25%概率多造成200点额外伤害<br>获取：在港口-鱼魜岛或宝藏岛击败眼镜王蛇掉落<br><img src='images/yjws.jpg' style='width:100%;max-width:350px;'>">四配</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击命中时为敌人叠加一层印记，叠满三层时清除印记追加240点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣手持时+10%移速</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇左上角120币转盘抽取，保底物品</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：250-330<br>后摇-10%<br>攻击距离：1.9 ->2.47<br>蓄力时间：0.3 ->0.27<br>体力消耗：15 ->13.5<br>攻击附加100点额外伤害，有25%概率多造成200点额外伤害">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/yingji.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">影棘</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：100-150</p>
+        <p style="margin:4px 0;font-size:19px;">类别：匕首类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：1000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：10零件箱3粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/meij.jpg' style='max-width:220px;'><br><b>美金</b><br>效果：攻击力+10，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1央伟达显卡+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tcyj.jpg' style='max-width:220px;'><br><b>[涂层]影棘</b><br>效果：攻击力+20，体力消耗-10%(但实际为30%，好像还没修)<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/yx.jpg' style='max-width:220px;'><br><b>蚁腺</b><br>效果：攻击附加100点额外伤害<br>获取：在感染社区-蚁穴的工匠那里消耗3个蚁鞭兑换，蚁鞭由蚁防烷蚁掉落<br><img src='images/yfwy.jpg' style='width:100%;max-width:350px;'>">三配</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/lqxy.jpg' style='max-width:220px;'><br><b>两钳像岳</b><br>效果：攻击力+20，后摇-20%<br>获取：感染社区-蚁穴兵封王座第2期甲虫族关底boss两钳像岳掉落<br><img src='images/bosslqxy.jpg' style='width:100%;max-width:350px;'>">四配</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击为二连击，两段攻击单独计算体力消耗、造成伤害、触发被动，但只消耗一次耐久</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣攻击命中时为敌人叠加一层印记，叠满4层时清除印记追加300点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">3️⃣隐藏被动，手持时+15%移速</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇右上角120币转盘抽取，保底物品</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：150-200<br>后摇-30%<br>蓄力时间：0.5 ->0.45<br>体力消耗：10 ->7<br>攻击附加100点额外伤害">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/ruilinci.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">瑞麟刺</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：200-280</p>
+        <p style="margin:4px 0;font-size:19px;">类别：匕首类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：1000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：10零件箱3粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/rj.jpg' style='max-width:220px;'><br><b>燃金</b><br>效果：攻击力+10，攻击距离+10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1美丽的芯+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tcrlc.jpg' style='max-width:220px;'><br><b>[涂层]瑞麟刺</b><br>效果：攻击力+20，体力消耗-10%<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/hc.jpg' style='max-width:220px;'><br><b>火刺</b><br>效果：攻击附加100点额外伤害<br>获取：游园镇联机副本火之高兴内的boss火之高兴小概率掉落<br>港口-实验岛试炼商店消耗5个二阶试炼币兑换<br>后期地图里可以捡一个<br><img src='images/hzgx.jpg' style='width:100%;max-width:350px;'>">三配</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/ys.jpg' style='max-width:220px;'><br><b>燚山</b><br>效果：攻击力+40<br>获取：消防局办公楼内二阶boss燚山掉落<br><img src='images/bossys.jpg' style='width:100%;max-width:350px;'>">四配</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击附加100点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣攻击有25%概率多造成200点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">3️⃣手持时+10%移速</p>
+    <p style="margin:4px 0;font-size:19px;">获取：限时商店兑换</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：270-350<br>攻击距离：2.5 ->2.75<br>体力消耗：15 ->13.5<br>攻击附加200点额外伤害(计入被动)">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/nvwangbian.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">女王鞭</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：260</p>
+        <p style="margin:4px 0;font-size:19px;">类别：鞭类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：1000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：10零件箱3粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/rouj.jpg' style='max-width:220px;'><br><b>柔金</b><br>效果：攻击力+10，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1红帽子+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tcnwb.jpg' style='max-width:220px;'><br><b>[涂层]女王鞭</b><br>效果：攻击力+40，体力消耗-10%<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/yb.jpg' style='max-width:220px;'><br><b>蚁鞭</b><br>效果：攻击力+15，攻击猴类敌人时多造成100点额外伤害<br>获取：感染社区-蚁穴里击败boss蚁防烷蚁掉落<br><img src='images/yfwy.jpg' style='width:100%;max-width:350px;'>">三配</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/xrzz.jpg' style='max-width:220px;'><br><b>仙人足兆</b><br>效果：攻击力+40，后摇-25%，攻击猴类敌人时多造成200点额外伤害<br>获取：山寨水果山里击败二阶boss仙人足兆掉落或港口-实验岛试炼商店消耗2个二阶试炼币兑换<br><img src='images/bossxrzz.jpg' style='width:100%;max-width:350px;'>">四配</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击命中时为敌人叠加一层流血，最多5层，持续5秒</p>
+    <p style="margin:4px 0;font-size:19px;">^流血：触发时，受到(20*印记层数)点额外伤害，每层印记还会额外增加约1.5%移速(给敌人的),5秒内出伤7次</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣攻击猴类敌人时多造成200点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">3️⃣隐藏被动，无视伤害减免，鞭类武器都有，可能是特性</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇左上角120币转盘抽取，保底物品</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：365<br>后摇-35%<br>体力消耗：18 ->16.2<br>蓄力时间：0.5 ->0.45<br>攻击猴类敌人时多造成500点额外伤害(计入被动)">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/kuaimajiabian.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">快马加鞭</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：200-260</p>
+        <p style="margin:4px 0;font-size:19px;">类别：鞭类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：1000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：10零件箱3粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/rouj.jpg' style='max-width:220px;'><br><b>柔金</b><br>效果：攻击力+10，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1红帽子+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tckmjb.jpg' style='max-width:220px;'><br><b>[涂层]快马加鞭</b><br>效果：攻击力+30，体力消耗-10%<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/hc.jpg' style='max-width:220px;'><br><b>火刺</b><br>效果：攻击附加100点额外伤害<br>获取：游园镇联机副本火之高兴内的boss火之高兴小概率掉落<br>港口-实验岛试炼商店消耗5个二阶试炼币兑换<br>后期地图里可以捡一个<br><img src='images/hzgx.jpg' style='width:100%;max-width:350px;'>">三配</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击命中时获得一层buff，每层+2%移速，最多5层</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣攻击附加100点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">3️⃣攻击命中时为敌人叠加一层印记，叠满4层时消除印记追加200点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">4️⃣隐藏被动，无视伤害减免，鞭类武器都有，可能是特性</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇左上角120币转盘抽取，保底物品</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：240-300<br>后摇-10%<br>体力消耗：15 ->13.5<br>蓄力时间：0.3 ->0.27<br>攻击附加200点额外伤害(计入被动)">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/awp.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">阿瓦普步枪</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：720</p>
+        <p style="margin:4px 0;font-size:19px;">类别：步枪(枪械)类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：1000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：10零件箱3粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/bhj.jpg' style='max-width:220px;'><br><b>必合金</b><br>效果：攻击力+10，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1烧焦的尾巴+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tcawp.jpg' style='max-width:220px;'><br><b>[涂层]阿瓦普</b><br>效果：攻击力+80，体力消耗-10%<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/srq.jpg' style='max-width:220px;'><br><b>散热器</b><br>效果：攻击力+40，后摇-20%<br>获取：在消防局综合楼击败二阶boss燚焰掉落或在港口-实验岛试炼商店消耗3个二阶试炼币兑换<br><img src='images/yy.jpg' style='width:100%;max-width:350px;'>">三配</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/gyqk.jpg' style='max-width:220px;'><br><b>高压枪口</b><br>效果：攻击力+60，精准度+35%，体力消耗-20%<br>获取：在消防局训练塔击败钢加钢掉落<br><img src='images/xfj3.jpg' style='width:100%;max-width:350px;'>">四配</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击命中时施加约0.3s的50%减速</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣攻击有约25%概率多造成720点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇右上角120币转盘抽取，保底物品</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：910<br>后摇-30%<br>体力消耗：30 ->21<br>蓄力时间：0.5 ->0.45<br>散射角度45-5">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/maikeleidian.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">麦克雷电</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：450</p>
+        <p style="margin:4px 0;font-size:19px;">类别：手枪(枪械)类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：1000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：10零件箱3粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/bhj.jpg' style='max-width:220px;'><br><b>必合金</b><br>效果：攻击力+10，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1烧焦的尾巴+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tcmkld.jpg' style='max-width:220px;'><br><b>[涂层]麦克雷电</b><br>效果：攻击力+40<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/fzfg.jpg' style='max-width:220px;'><br><b>负载风干</b><br>效果：攻击力+80，攻击有50%概率多造成200点额外伤害<br>获取：在变电站击败精英怪负载雷雷掉落<br><img src='images/fzll.jpg' style='width:100%;max-width:350px;'>">三配</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/dcbx.jpg' style='max-width:220px;'><br><b>电虫保鲜</b><br>效果：攻击力+120，蓄力时间-10%，后摇-10%<br>获取：在变电站击败精英怪迅雷不及掉落或在港口-实验岛试炼商店消耗3个二阶试炼币兑换<br><img src='images/xlbj.jpg' style='width:100%;max-width:350px;'>">四配</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：攻击附加100点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇左下角300币转盘抽取，非保底物品</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：700<br>后摇-20%<br>蓄力时间：0.6 ->0.48<br>攻击有50%概率多造成200点额外伤害">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/haiyangzhiying.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">海洋之鹰</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：420</p>
+        <p style="margin:4px 0;font-size:19px;">类别：手枪(枪械)类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：1000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：10零件箱3粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/lhj.jpg' style='max-width:220px;'><br><b>吕合金</b><br>效果：攻击力+10，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1酸液腺+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tcyl.jpg' style='max-width:220px;'><br><b>[涂层]洋流</b><br>效果：攻击力+40，体力消耗-10%<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/smds.jpg' style='max-width:220px;'><br><b>水母毒素</b><br>效果：攻击力+80，攻击海怪时附加200点额外伤害<br>获取：在港口-游轮联机副本内击败boss变异水母小概率掉落<br><img src='images/bysm.jpg' style='width:100%;max-width:350px;'>">三配</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/hsq.jpg' style='max-width:220px;'><br><b>海蛇鳍</b><br>效果：攻击力+40，攻击海怪时附加200点额外伤害<br>获取：在港口-游轮联机副本内击败boss巨型海蛇小概率掉落<br><img src='images/jxhs.jpg' style='width:100%;max-width:350px;'>">四配</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：无</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇右下角80币转盘抽取，保底物品</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：590<br>体力消耗：20 ->18<br>后摇-10%<br>蓄力时间：0.5 ->0.45<br>攻击海怪时附加400点额外伤害">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/shajing.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">煞晶</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：450</p>
+        <p style="margin:4px 0;font-size:19px;">类别：手枪(枪械)类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：1000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：10零件箱3粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/lhj.jpg' style='max-width:220px;'><br><b>吕合金</b><br>效果：攻击力+10，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1酸液腺+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tcsj.jpg' style='max-width:220px;'><br><b>[涂层]煞晶</b><br>效果：攻击力+50，体力消耗-10%<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/ysbs.jpg' style='max-width:220px;'><br><b>幽深宝石</b><br>效果：攻击力+60，体力消耗-10%<br>获取：在港口-蝙蝠岛-蝙蝠地牢内的赦罪祭坛那里消耗50鱼鳞+2拐棍制作<br><img src='images/bfdl2.jpg' style='width:100%;max-width:350px;'><br>拐棍由二阶boss老鲶魜掉落<br><img src='images/lnr.jpg' style='width:100%;max-width:350px;'>">三配</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/cybs.jpg' style='max-width:220px;'><br><b>赤翼宝石</b><br>效果：攻击力+80，射程+20%<br>获取：在港口-蝙蝠岛-蝙蝠地牢内的赦罪祭坛那里消耗10新鲜血囊+4蝙蝠翅膀+1蝙蝠牙齿制作<br><img src='images/bfdl1.jpg' style='width:100%;max-width:350px;'><br>蝙蝠翅膀由boss蝠如东海掉落<br><img src='images/frdh.jpg' style='width:100%;max-width:350px;'><br>蝙蝠牙齿由二阶boss蝠想连骗掉落<br><img src='images/fxlp.jpg' style='width:100%;max-width:350px;'>">四配</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击海怪时附加400点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣攻击有20%概率多造成450点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">获取：在蝙蝠地牢内收集3个部件后，于赦罪祭坛(也在蝙蝠地牢里)处合成</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：650<br>体力消耗：30 ->24<br>后摇-10%<br>蓄力时间：0.6 ->0.54<br>攻击距离：6 ->7.2">详情</span>
+    </p>
+    <p style="margin:4px 0;font-size:19px;">-----分割线-----</p>
+        <p style="margin:4px 0;font-size:19px;">附
+                <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/bfdl3.jpg' style='width:100%;max-width:350px;'><br><b>可放大观看</b><br>也可以去翻我之前的视频评论区找原图<br>ps：蝙蝠岛需要将尼奥终章的剧情推到301岛地下实验室，找到神秘地图后才能解锁，进入蝙蝠地牢需要解密，开启赦罪祭坛需要先点亮地牢内的5个火炬，这些我都有发过视频">蝙蝠地牢简易地图</span>
+        一张
+        </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/hddxq.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">皇帝的新枪</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：666</p>
+        <p style="margin:4px 0;font-size:19px;">类别：枪械类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：800</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：10零件箱</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/lhj.jpg' style='max-width:220px;'><br><b>吕合金</b><br>效果：攻击力+10，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1酸液腺+5黄帽子兑换">材质</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击不消耗弹药</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣子弹飞行速度极慢</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇左下角300币转盘抽取，非保底物品且不定期返场</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：676<br>后摇-10%<br>蓄力时间：0.6 ->0.54">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/shuiqiang.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">水枪</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：450</p>
+        <p style="margin:4px 0;font-size:19px;">类别：枪械类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：1000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：1粘合剂2胶带</p>
+        <p style="margin:4px 0;font-size:19px;">配件：不可改造</p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击火炎生物时多造成400点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣攻击命中时施加约0.3s的50%减速</p>
+    <p style="margin:4px 0;font-size:19px;">3️⃣攻击命中时为敌人叠加一层印记，若印记达到6层则追加200点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">获取：限时商店兑换</p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/qingdianlipao.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">庆典礼炮</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：400</p>
+        <p style="margin:4px 0;font-size:19px;">类别：火铳类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：500</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：10零件箱3粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/lhj.jpg' style='max-width:220px;'><br><b>吕合金</b><br>效果：攻击力+10，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1酸液腺+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tcqdlp.jpg' style='max-width:220px;'><br><b>[涂层]庆典礼炮</b><br>效果：攻击力+30，体力消耗-10%<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/rxyb.jpg' style='max-width:220px;'><br><b>睿玺硬币</b><br>效果：攻击力+10，每次攻击时叠加一层buff，每层+5%移速，最多5层<br>获取：限时活动获取">三配</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/gh.jpg' style='max-width:220px;'><br><b>光华</b><br>效果：攻击附加100点额外伤害<br>获取：限时活动获取">四配</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击改为发射一发炮弹，炮弹会在落点处造成范围伤害，被动的附加额外伤害可以范围生效，伤害也可隔墙打到敌人</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣蓄力不减移速</p>
+    <p style="margin:4px 0;font-size:19px;">3️⃣攻击不消耗弹药</p>
+    <p style="margin:4px 0;font-size:19px;">获取：限时商店兑换</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：450<br>体力消耗：22 ->19.8<br>后摇-10%<br>蓄力时间：0.5 ->0.45<br>攻击附加100点额外伤害<br>每次攻击时叠加一层buff，每层+5%移速，最多5层">详情</span>
+    </p>
+</div>
+</div>
+
+    <h3 style="text-align:center;font-weight:bold;font-size:22px;color:#222;margin:40px 0 20px 0;">常驻五星武器</h3>
+    <div style="border:1px solid #dcdfe6;border-radius:12px;padding:16px;text-align:center;margin-bottom:24px;">
+
+    <img src="images/jtc.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">祭天锤</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：400</p>
+        <p style="margin:4px 0;font-size:19px;">类别：锤类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：300</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：20铸钢2粘合剂</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/xw.jpg' style='max-width:220px;'><br><b>蝎王</b><br>效果：攻击有概率施加中毒<br>*中毒：触发时受到40点额外伤害(无法破甲)，一次buff可触发4次扣血<br>获取：在火力发电站联机副本内击败响尾蝎王掉落<br><img src='images/xwxw.jpg' style='width:100%;max-width:350px;'>">生物素材1</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/sy.jpg' style='max-width:220px;'><br><b>石猿</b><br>效果：攻击有概率多造成200点额外伤害(无法破甲)<br>获取：在深渊联机副本击败深渊石猿掉落，单人需要有狗才能进副本<br><img src='images/sysy.jpg' style='width:100%;max-width:350px;'>">生物素材2</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣破甲，可对甲壳类敌人造成伤害</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣隐藏被动，手持-20移速</p>
+    <p style="margin:4px 0;font-size:19px;">获取：在博登家地下室击败祭天掉落，需要在19:00点前进入博登家等到天黑后才会出现地下室入口</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：我觉得没有写的必要，拉完了 </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/lly.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">理疗仪</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：150-360</p>
+        <p style="margin:4px 0;font-size:19px;">类别：棍棒类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：2000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：不知道，我没有</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/sj.jpg' style='max-width:220px;'><br><b>神金</b><br>效果：攻击力+10，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1红帽子+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tclly.jpg' style='max-width:220px;'><br><b>[涂层]理疗仪</b><br>效果：攻击力+36，体力消耗-10%<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/blbk.jpg' style='max-width:220px;'><br><b>奔雷臂铠</b><br>效果：攻击力+80，攻击距离+10%<br>获取：在变电站击败二阶boss奔雷手掉落<br><img src='images/bls.jpg' style='width:100%;max-width:350px;'><br><br><img src='images/jh.jpg' style='max-width:220px;'><br><b>惊魂</b><br>效果：攻击附加100点额外伤害<br>获取：在山寨击败二阶boss电锯惊魂小概率掉落或在港口-实验岛试炼商店消耗5个二阶试炼币兑换<br><img src='images/djjh.jpg' style='width:100%;max-width:350px;'><br><br>这个我只知道它描述是理疗仪配件，但能不能装不知道，装那里也不知道">数值配件</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/lltg.jpg' style='max-width:220px;'><br><b>雷龙头骨</b><br>效果：攻击力+150，每命中攻击4次，以人物面朝方向为起点，召唤雷龙对前方长矩形范围内的敌人造成666点额外伤害<br>获取：在变电站击败三阶boss光明雷落掉落，本身属于隐藏boss，未击败前不在图鉴里显示<br><img src='images/gmll.jpg' style='width:100%;max-width:350px;'><br><br><img src='images/blz.jpg' style='max-width:220px;'><br><br><b>壁雷针</b><br>效果：攻击力+100，每攻击命中4次，在自身周围召唤一圈环绕电球，每0.5秒对周围的敌人造成200点额外伤害，期间自身+70%移速<br>获取：在变电站办公室击败三阶boss大雷滚滚掉落<br><img src='images/dlgg.jpg' style='width:100%;max-width:350px;'>">武魂真身</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击命中时施加80%减速，持续3秒</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣攻击附加200点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">3️⃣攻击机械类敌人时多造成400点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇常驻积分商店里消耗98888积分兑换(要等轮换出来)</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击距离：1.9 ->2.09<br>后摇-10%<br>蓄力时间：0.5 ->0.45<br>体力消耗：20 ->18<br>1️⃣攻击力：426-636<br>每攻击命中4次，以人物面朝方向为起点，召唤雷龙对前方长矩形范围内的敌人造成666点额外伤害<br>-->(选择雷龙头骨时)<br>2️⃣攻击力：376-586<br>每攻击命中4次，在自身周围召唤一圈环绕电球，每0.5秒对周围的敌人造成200点额外伤害，期间自身+70%移速<br>-->(选择壁雷针时)<br><br>这里就不算 惊魂 配件了">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/shg.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">烧火竿</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：120-300</p>
+        <p style="margin:4px 0;font-size:19px;">类别：长枪类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：2000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：不知道，我没有</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/rj.jpg' style='max-width:220px;'><br><b>燃金</b><br>效果：攻击力+10，攻击距离+10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1美丽的芯+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tcshg.jpg' style='max-width:220px;'><br><b>[涂层]烧火竿</b><br>效果：攻击力+30，体力消耗-10%<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/hc.jpg' style='max-width:220px;'><br><b>火刺</b><br>效果：攻击附加100点额外伤害<br>获取：游园镇联机副本火之高兴内的boss火之高兴小概率掉落<br>在港口-实验岛试炼商店消耗5个二阶试炼币兑换<br>后期地图里可以捡一个<br><img src='images/hzgx.jpg' style='width:100%;max-width:350px;'>">数值配件</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/hltg.jpg' style='max-width:220px;'><br><b>火龙头骨</b><br>效果：攻击力+150，每攻击命中4次，以自身面朝方向为起点，召唤火龙定点对前方扇形范围喷火，共造成4次200点额外伤害<br>获取：在港口-鱼魜岛击败三阶boss火鳞火现掉落，位置在眼镜王蛇那个区域的右上角<br><img src='images/hlhx.jpg' style='width:100%;max-width:350px;'><br><br><img src='images/bzyw.jpg' style='max-width:220px;'><br><b>不知燚舞</b><br>效果：攻击力+150，每攻击命中4次，以自己面朝方向为正前方，召唤不知燚舞分别对自身正前方、正后方、左侧、右侧四个区域各造成666点额外伤害(打满有2664点，怎么打满你别问)<br>获取：在消防局击败三阶boss不知燚舞掉落<br><img src='images/bossbzyw.jpg' style='width:100%;max-width:350px;'>">武魂真身</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击命中时施加燃烧，每秒造成120点额外伤害，持续3秒</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣攻击附加200点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">3️⃣手持+15%移速</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇常驻积分商店里消耗98888积分兑换(要等轮换出来)</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：310-490<br>攻击距离：3.2 ->3.52<br>体力消耗：20 ->18<br>攻击附加300点额外伤害(计入被动)<br>1️⃣每攻击命中4次，以自身面朝方向为起点，召唤火龙定点对前方扇形范围喷火，共造成4次200点额外伤害<br>-->(选择火龙头骨时)<br>2️⃣每攻击命中4次，以自己面朝方向为正前方，召唤不知燚舞分别对自身正前方、正后方、左侧、右侧四个区域各造成666点额外伤害(打满有2664点，怎么打满你别问)<br>-->(选择不知燚舞时)">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/jq.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">娇妻</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：160-400</p>
+        <p style="margin:4px 0;font-size:19px;">类别：锤类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：2000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：不道知，没我有</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/gj.jpg' style='max-width:220px;'><br><b>刚金</b><br>效果：攻击力+20，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1美丽的芯+5黄帽子兑换或港口-实验岛试炼商店消耗1个三阶试炼币兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tcjq.jpg' style='max-width:220px;'><br><b>[涂层]娇妻</b><br>效果：攻击力+40 ，体力消耗-10%，增加攻击距离<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tj.jpg' style='max-width:220px;'><br><b>土晶</b><br>效果：攻击附加100点额外伤害<br>获取：在游园镇联机副本烂泥内击败boss土之厚实小概率掉落或在港口-实验岛试炼商店消耗5个二阶试炼币兑换<br><img src='images/tzhs.jpg' style='width:100%;max-width:350px;'><br><br><img src='images/dy.jpg' style='max-width:220px;'><br><b>大眼</b><br>效果：攻击力+80，蓄力时间-15%，后摇-20%<br>获取：在港口-鱼魜岛击败二阶boss大开眼界掉落，入口在一个鲨鱼骨架后面<br><img src='images/dkyj.jpg' style='width:100%;max-width:350px;'>">数值配件</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/sltg.jpg' style='max-width:220px;'><br><b>沙龙头骨</b><br>效果：攻击力+200，体力消耗-18%，每攻击命中3次，召唤沙龙在自己面前圆形区域生成尘暴，每秒造成400点额外伤害和减速，持续2秒<br>获取：在感染社区-蚁穴三层击败三阶boss飞沙走石掉落，需要击败蛐蛐蝼蚁才能开启入口<br><img src='images/fszs.jpg' style='width:100%;max-width:350px;'><br><br><img src='images/lytg.jpg' style='max-width:220px;'><br><b>蝼蚁头骨</b><br>效果：攻击力+200，体力消耗-18%，每攻击命中3次，召唤蝼蚁对面前大范围内的目标造成600点额外伤害<br>获取：在感染社区-蚁穴三层击败三阶boss蛐蛐蝼蚁掉落<br><img src='images/qqly.jpg' style='width:100%;max-width:350px;'>">武魂真身</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击甲壳类敌人时有概率多造成2000点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣攻击时有概率多造成400点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">3️⃣蓄力时移速+100%(其实就是蓄力不减移速)</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇常驻积分商店里消耗98888积分兑换(要等轮换出来)</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>体力消耗：35 ->25.2<br>攻击距离：1.9 ->2.1<br>1️⃣攻击力：420-660，后摇-10%<br>蓄力时间：0.8 ->0.72<br>攻击附加100点额外伤害(不计入被动)<br>每攻击命中3次，召唤沙龙在自己面前圆形区域生成尘暴，每秒造成400点额外伤害和减速，持续2秒<br>-->(选择土晶和沙龙头骨时)<br>2️⃣攻击力：500-740，后摇-30%<br>蓄力时间：0.8 ->0.6<br>每攻击命中3次，召唤沙龙在自己面前圆形区域生成尘暴，每秒造成400点额外伤害和减速，持续2秒<br>-->(选择大眼和沙龙头骨时)<br>3️⃣攻击力：420-660，后摇-10%<br>蓄力时间：0.8 ->0.72<br>攻击附加100点额外伤害(不计入被动)<br>每攻击命中3次，召唤蝼蚁对面前大范围内的目标造成600点额外伤害<br>-->(选择土晶和蝼蚁头骨时)<br>4️⃣攻击力：500-740，后摇-30%<br>蓄力时间：0.8 ->0.6<br>每攻击命中3次，召唤蝼蚁对面前大范围内的目标造成600点额外伤害<br>-->(选择大眼和蝼蚁头骨时)">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/mmq.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">喵喵拳</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：13-52</p>
+        <p style="margin:4px 0;font-size:19px;">类别：拳类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：2000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：知道不，没有我</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/hhj.jpg' style='max-width:220px;'><br><b>皇后金</b><br>效果：攻击力+30，攻击距离+10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1巨星主板+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tcmmq.jpg' style='max-width:220px;'><br><b>[涂层]喵喵拳</b><br>效果：攻击力52+，体力消耗-10%<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tbff.jpg' style='max-width:220px;'><br><b>通臂狒佛</b><br>效果：攻击力+100，攻击距离+25%<br>获取：在山寨-水果山击败二阶boss通臂狒佛掉落<br><img src='images/bosstbff.jpg' style='width:100%;max-width:350px;'>">数值配件</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/bltg.jpg' style='max-width:220px;'><br><b>冰龙头骨</b><br>效果：攻击力+150，攻击命中敌人时施加一层减速，每层-15%移速，最多5层；每攻击命中5次，召唤冰龙对自身面前直线上的目标造成666点额外伤害<br>获取：在感染社区-触手区击败三阶boss冷若冰霜掉落，需要击败九爪章鱼才能开启入口<br><img src='images/lrbs.jpg' style='width:100%;max-width:350px;'><br><br><img src='images/hdxy.jpg' style='max-width:220px;'><br><b>蝴蝶效应</b><br>效果：攻击力+200，每攻击命中5次，自身获得1秒的乘风buff，+50%移速<br>获取：在山寨-水果山击败三阶boss蝴蝶效应掉落，需要提交一些材料才能开启入口<br><img src='images/bosshdxy.jpg' style='width:100%;max-width:350px;'>">武魂真身</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击命中时施加一层印记1，叠满3层时消除印记1追加520点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣攻击命中时施加一层印记2，叠满5层时消除印记2追加1314点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">3️⃣手持+15%移速，蓄力时+100%移速(其实就是蓄力不减移速)</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇常驻积分商店里消耗98888积分兑换(要等轮换出来)</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击距离：2 ->2.7<br>体力消耗：10 ->9<br>1️⃣攻击力：345-384<br>攻击命中敌人时施加一层减速，每层-15%移速，最多5层；每攻击命中5次，召唤冰龙对自身面前直线上的目标造成666点额外伤害<br>-->(选择冰龙头骨时)<br>2️⃣攻击力：395-434<br>每攻击命中5次，自身获得1秒的乘风buff，+50%移速<br>-->(选择蝴蝶效应时)">详情</span>
+    </p>
+</div>
+
+    <div style="height:40px;"></div>
+    <img src="images/lgb.jpg" style="max-width:160px;max-height:160px;object-fit:contain;margin:0 auto 12px auto;display:block;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">龙骨鞭</p>
+    <div style="display:inline-block;text-align:left;">
+        <p style="margin:4px 0;font-size:19px;">攻击力：160-360</p>
+        <p style="margin:4px 0;font-size:19px;">类别：鞭类武器</p>
+        <p style="margin:4px 0;font-size:19px;">耐久：2000</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：知不道，有我没</p>
+        <p style="margin:4px 0;font-size:19px;">配件：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/rouj.jpg' style='max-width:220px;'><br><b>柔金</b><br>效果：攻击力+10，后摇-10%，蓄力时间-10%<br>获取：游园镇商贩<b>概率</b>刷新，消耗1红帽子+5黄帽子兑换">材质</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/tclgb.jpg' style='max-width:220px;'><br><b>[涂层]龙骨鞭</b><br>效果：攻击力+40，体力消耗-10%<br>获取：游园镇消耗钻石购买，具体多少游戏内自己看吧">涂层</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/ws.jpg' style='max-width:220px;'><br><b>蛙舌</b><br>效果：攻击力+80，蓄力时间-10%，攻击有50%概率多造成200点额外伤害<br>获取：在港口-宝藏岛击败二阶boss魔鬼蛙掉落<br><img src='images/moguiwa.jpg' style='width:100%;max-width:350px;'>">数值配件</span>
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<img src='images/dltg.jpg' style='max-width:220px;'><br><b>毒龙头骨</b><br>效果：攻击力+ 80-150，后摇-15%，体力消耗-10%；每攻击命中3次，召唤毒龙向自身面朝方向冲刺，对矩形路径上的目标造成333点额外伤害并施加中毒，每秒受到100点额外伤害，持续3秒<br>获取：在港口-热殆鱼林击败三阶boss毒霸疫方掉落，需要在19:00后按正确顺序启动机关才能开启入口，我发过视频<br><img src='images/dbyf.jpg' style='width:100%;max-width:350px;'><br><br><img src='images/jzzy.jpg' style='max-width:220px;'><br><b>九爪章鱼</b><br>效果：攻击力+ 80-150，后摇-15%，体力消耗-10%；每攻击命中3次，以自身为中心，召唤九爪章鱼对圆形范围内的目标造成666点额外伤害和3秒减速<br>获取：在感染社区-触手区击败三阶boss九爪章鱼掉落，需要先击败周围4只触手可及才能开启入口<br><img src='images/bossjzzy.jpg' style='width:100%;max-width:350px;'>">武魂真身</span>
+        </p>
+    <p style="margin:4px 0;font-size:19px;">被动：</p>
+    <p style="margin:4px 0;font-size:19px;">1️⃣攻击命中时为敌人叠加一层流血，为自身叠加一层2%的加速，均最多叠加5层，持续5秒</p>
+    <p style="margin:4px 0;font-size:19px;">^流血：触发时受到(40*印记层数)点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">2️⃣攻击附加200点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">3️⃣攻击海怪和猴类敌人时多造成400点额外伤害</p>
+    <p style="margin:4px 0;font-size:19px;">4️⃣隐藏被动，无视伤害减免，鞭类武器都有，可能是特性</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇常驻积分商店里消耗98888积分兑换(要等轮换出来)</p>
+    <p style="margin:4px 0;font-size:19px;">满配面板：
+        <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
+              data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：370-640<br>体力消耗：20 ->16<br>蓄力时间：0.5 ->0.4<br>后摇-25%<br>攻击有50%概率多造成200点额外伤害<br>1️⃣每攻击命中3次，召唤毒龙向自身面朝方向冲刺，对矩形路径上的目标造成333点额外伤害并施加中毒，每秒受到100点额外伤害，持续3秒<br>-->(选择毒龙头骨时)<br>2️⃣每攻击命中3次，以自身为中心，召唤九爪章鱼对圆形范围内的目标造成666点额外伤害和3秒减速<br>-->(选择九爪章鱼时)">详情</span>
+    </p>
+</div>
+</div>
+
+    <h3 style="text-align:center;font-weight:bold;font-size:22px;color:#222;margin:40px 0 20px 0;">限定五星武器</h3>
+    <div style="border:1px solid #dcdfe6;border-radius:12px;padding:16px;text-align:center;margin-bottom:24px;">
+    <p style="font-size:22px;font-weight:bold;margin:8px 0 12px 0;">码不动字了，具体信息请移步“快速积分查询”页面查看</p>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>`;
     container.innerHTML = html;
 }
 // 2. 页面跳转统一逻辑
@@ -1558,7 +2614,7 @@ function goPage(pageType){
     document.getElementById("calcA").classList.add("hide");
     document.getElementById("calcB").classList.add("hide");
     document.getElementById("emptyPage").classList.add("hide");
-    document.getElementById("page-weapons").classList.add("hide");   // 新增
+    document.getElementById("page-weapons").classList.add("hide");
 
     //记录当前页面
     currentPage = pageType;
@@ -1566,16 +2622,33 @@ function goPage(pageType){
     // 根据选项跳转页面
     if(pageType === 'query'){
         document.getElementById("calcB").classList.remove("hide");
-    }else if(pageType === 'weapons'){                                 // 新增分支
+    }else if(pageType === 'weapons'){
         document.getElementById("page-weapons").classList.remove("hide");
-        renderWeapons();                                             // 进入武器页时生成内容
+        renderWeapons();
     }else if(pageType === 'empty'){
         document.getElementById("emptyPage").classList.remove("hide");
     }else if(pageType === 'home'){
         // 返回主页面
         document.getElementById("calcA").classList.remove("hide");
     }
+
+    // ==========新增这一段，控制返回顶部按钮显示【稳定简化版】==========
+    if(currentPage !== 'home'){
+        if(window.scrollY > 80){
+            backTopBtn.style.display = 'block';
+            backTopBtn.style.opacity = '1';
+        }else{
+            backTopBtn.style.opacity = '0';
+            backTopBtn.style.display = 'none';
+        }
+    }else{
+        backTopBtn.style.opacity = '0';
+        backTopBtn.style.display = 'none';
+    }
 }
+
+
+
 
 
 // 3. 返回主页面（calcA）
@@ -1600,12 +2673,14 @@ document.body.addEventListener('click', function(e) {
     }
 });
     function getTodayStr() {
-        const d = new Date();
-        const year = d.getFullYear();
-        const month = String(d.getMonth() + 1).padStart(2, '0');
-        const day = String(d.getDate()).padStart(2, '0');
-        return `${year}-${month}-${day}`;
-    }
+    const d = new Date();
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+   return `${year}-${month}-${day}`;
+    return year + "-" + month + "-" + day;
+}
+
 
     window.onload = function() {
         const todayStr = getTodayStr();
@@ -1946,90 +3021,148 @@ function calcQuickTotal() {
         <div id="tipText" style="font-size:16px;line-height:1.7;color:#222;white-space: pre-line;"></div>
     </div>
 </div>
+
+<!-- 返回顶部悬浮按钮 -->
+<button id="backTopBtn"
+        onmouseover="this.style.background='rgba(64,158,255,0.95)';this.style.transform='scale(1.1)';"
+        onmouseout="this.style.background='rgba(64,158,255,0.55)';this.style.transform='scale(1)';"
+        style="
+    position:fixed;
+    bottom:24px;
+    right:max(24px, calc(50vw - 580px));
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    border:none;
+    background:rgba(64,158,255,0.55);
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+    display:none;
+    z-index:190;
+    box-shadow:0 3px 10px rgba(0,0,0,0.25);
+    transition:all 0.2s ease;
+    backdrop-filter:blur(4px);
+">↑</button>
+
+
+
+
+
+
+
 <script>
-    // ==========【唯一修改处】修改这里即可更换起始时间==========
-    // 🔘计时器开关 true=正常运行  false=临时停用计时器
-    let timerSwitch = true;
+    const backTopBtn = document.getElementById('backTopBtn');
 
-    // 格式：new Date(年份, 月份-1, 日期, 时, 分, 秒)
-    // 1月30日 = 月份填0；7月30日 = 月份填6
-    const startTimestamp = new Date(2026, 0, 30, 0, 0, 0).getTime();
-    // ==========================================================
-
-    function updateCountTime() {
-        // 开关关闭就直接退出，停止计时
-        if(!timerSwitch){
-            document.getElementById("timeDiffText").innerText = "暂停使用";
-            return;
-        }
-
-        const nowTime = Date.now();
-        const totalMs = nowTime - startTimestamp;
-
-        const day = Math.floor(totalMs / (1000 * 60 * 60 * 24));
-        const hour = Math.floor((totalMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minute = Math.floor((totalMs % (1000 * 60 * 60)) / (1000 * 60));
-        const second = Math.floor((totalMs % (1000 * 60)) / 1000);
-
-        document.getElementById("timeDiffText").innerText = `${day}天${hour}小时${minute}分钟${second}秒前`;
+// 滚动监听
+window.addEventListener('scroll', function(){
+    // 滚动超过80px，并且不是主页面home，就显示按钮
+    if(window.scrollY > 80 && currentPage !== 'home'){
+        backTopBtn.style.display = 'block';
+        backTopBtn.style.opacity = '1';
+    }else{
+        backTopBtn.style.opacity = '0';
+        backTopBtn.style.display = 'none';
     }
+})
 
-    updateCountTime();
-    setInterval(updateCountTime, 1000);
-
-    // ==========词条弹窗逻辑，全部包裹DOMContentLoaded==========
-document.addEventListener('DOMContentLoaded', function(){
-    const tipModal = document.getElementById("tipModal");
-    const tipText = document.getElementById("tipText");
-    const tipCloseBtn = document.getElementById("tipCloseBtn");
-
-    function showTip(key){
-        let infoText;
-        if(tipData && tipData[key]){
-            infoText = tipData[key];
-        }else{
-            infoText = key;
-        }
-        if(!infoText){
-            return;
-        }
-        tipText.innerHTML = infoText;
-        tipModal.style.display = "flex";
-        //新增：锁定页面滚动
-        document.body.classList.add("body-lock");
-    }
-
-    function closeTip(){
-        tipModal.style.display = "none";
-        //新增：解锁页面滚动
-        document.body.classList.remove("body-lock");
-    }
-
-    tipModal.addEventListener("click",function(e){
-        if(e.target === tipModal){
-            closeTip();
-        }
-    })
-    tipCloseBtn.addEventListener("click",closeTip);
-
-    window.showTip = showTip;
-
-    //事件委托（动态武器卡片弹窗）
-    document.getElementById("weaponContent").addEventListener("click",function(e){
-        const target = e.target.closest('span[data-tip]');
-        if(target){
-            const html = target.getAttribute('data-content');
-            showTip(html);
-        }
+// 点击回到顶部
+backTopBtn.addEventListener('click',function(){
+    window.scrollTo({
+        top:0,
+        behavior:'smooth'
     })
 })
 
+    // 点击返回顶部
+    backTopBtn.addEventListener('click',function(){
+        window.scrollTo({
+            top:0,
+            behavior:'smooth'
+        })
+    })
 
 
+        // ==========【唯一修改处】修改这里即可更换起始时间==========
+        // 🔘计时器开关 true=正常运行  false=临时停用计时器
+        let timerSwitch = true;
+
+        // 格式：new Date(年份, 月份-1, 日期, 时, 分, 秒)
+        // 1月30日 = 月份填0；7月30日 = 月份填6
+        const startTimestamp = new Date(2026, 0, 30, 0, 0, 0).getTime();
+        // ==========================================================
+
+        function updateCountTime() {
+            // 开关关闭就直接退出，停止计时
+            if(!timerSwitch){
+                document.getElementById("timeDiffText").innerText = "暂停使用";
+                return;
+            }
+
+            const nowTime = Date.now();
+            const totalMs = nowTime - startTimestamp;
+
+            const day = Math.floor(totalMs / (1000 * 60 * 60 * 24));
+            const hour = Math.floor((totalMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minute = Math.floor((totalMs % (1000 * 60 * 60)) / (1000 * 60));
+            const second = Math.floor((totalMs % (1000 * 60)) / 1000);
+
+            document.getElementById("timeDiffText").innerText = `${day}天${hour}小时${minute}分钟${second}秒前`;
+        }
+
+        updateCountTime();
+        setInterval(updateCountTime, 1000);
+
+        // ==========词条弹窗逻辑，全部包裹DOMContentLoaded==========
+        document.addEventListener('DOMContentLoaded', function(){
+            const tipModal = document.getElementById("tipModal");
+            const tipText = document.getElementById("tipText");
+            const tipCloseBtn = document.getElementById("tipCloseBtn");
+
+            function showTip(key){
+                let infoText;
+                if(tipData && tipData[key]){
+                    infoText = tipData[key];
+                }else{
+                    infoText = key;
+                }
+                if(!infoText){
+                    return;
+                }
+                tipText.innerHTML = infoText;
+                tipModal.style.display = "flex";
+                //新增：锁定页面滚动
+                document.body.classList.add("body-lock");
+            }
+
+            function closeTip(){
+                tipModal.style.display = "none";
+                //新增：解锁页面滚动
+                document.body.classList.remove("body-lock");
+            }
+
+            tipModal.addEventListener("click",function(e){
+                if(e.target === tipModal){
+                    closeTip();
+                }
+            })
+            tipCloseBtn.addEventListener("click",closeTip);
+
+            window.showTip = showTip;
+
+            //事件委托（动态武器卡片弹窗）
+            document.getElementById("weaponContent").addEventListener("click",function(e){
+                const target = e.target.closest('span[data-tip]');
+                if(target){
+                    const html = target.getAttribute('data-content');
+                    showTip(html);
+                }
+            })
+        })
 </script>
+
 </body>
 </html>
-
 
 
 
