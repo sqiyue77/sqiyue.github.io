@@ -430,6 +430,75 @@ input, .box {
 .body-lock{
     overflow:hidden !important;
 }
+.weapon-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.day-num {
+  color: #7cdbff;
+  font-weight: bold;
+}
+#weaponTableBody td {
+  padding: 14px 16px;
+  text-align: center;
+  border-bottom: 1px solid #38384c;
+  color:#fff;
+}
+.history-wrap{
+  margin-top:30px;
+}
+/* 最外围黑色大框 */
+.history-item {
+  border: 3px solid #000;
+  padding: 16px;
+  background: #222;
+  border-radius: 8px;
+}
+
+/* 红色标题栏 */
+.history-title {
+  border: 3px solid #ff2222;
+  padding: 6px 12px;
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+  margin: 0 auto 16px auto;
+  width: 60%;
+  border-radius: 4px;
+}
+
+/* 黄色内容块 */
+.history-block {
+  border: 3px solid #ffdd00;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 6px;
+}
+/* 单条武器条目，横向布局：左图，右边文字 */
+.history-weapon-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px 0;
+  border-bottom:1px solid #444;
+}
+/* 最后一个黄色块不要下边距 */
+.history-block:last-child {
+  margin-bottom: 0;
+}
+.history-weapon-row img{
+  width:60px;
+  height:60px;
+  object-fit:cover;
+  border-radius:8px;
+}
+.history-weapon-info{
+  color:#fff;
+  font-size:16px;
+  line-height:1.5;
+}
 
     </style>
 </head>
@@ -459,7 +528,12 @@ input, .box {
     <div style="padding:18px 24px;cursor:pointer;font-size:18px;border-bottom:4px solid #000000;"
          onmouseover="this.style.backgroundColor='#e6f2ff'"
          onmouseout="this.style.backgroundColor='#ffffff'"
-         onclick="goPage('empty')">开发中...</div>
+         onclick="goPage('empty')">限武up时间记录</div>
+
+    <div style="padding:18px 24px;cursor:pointer;font-size:18px;border-bottom:4px solid #000000;"
+         onmouseover="this.style.backgroundColor='#e6f2ff'"
+         onmouseout="this.style.backgroundColor='#ffffff'"
+         onclick="goPage('question')">部分问题快速查询</div>
 
     <!-- 第三行：返回首页独立底色区块 -->
     <div style="padding:18px 24px;cursor:pointer;font-size:18px;background:#f0f7ff;"
@@ -1429,14 +1503,73 @@ input, .box {
 
 <div id="emptyPage" class="box hide">
     <button class="switch-btn" onclick="toggleMenu(event)">🔄</button>
-    <h2 style="margin-top: 0;">暂定为介绍各副本的掉落物情况和敌人信息，有其他想法可以私信</h2>
+    <h2 style="margin-top: 0;text-align:center;color:#ffd76e;">武器UP复刻时间表</h2>
+    <table style="width:100%;margin:16px auto;border-collapse:collapse;background:#272735;border-radius:12px;overflow:hidden;">
+        <thead>
+        <tr>
+            <th style="padding:14px 8px;text-align:center;border-bottom:1px solid #38384c;background:#353548;color:#ffdd88;">武器</th>
+            <th style="padding:14px 8px;text-align:center;border-bottom:1px solid #38384c;background:#353548;color:#ffdd88;">上次UP时间</th>
+            <th style="padding:14px 8px;text-align:center;border-bottom:1px solid #38384c;background:#353548;color:#ffdd88;">距上次UP结束（天）</th>
+        </tr>
+        </thead>
+        <tbody id="weaponTableBody">
+        </tbody>
+    </table>
+
+    <!-- ========== 第一个表：各限五up具体记录（左图右文字，武器之间分隔） ========== -->
+    <h3 style="margin:24px 0 12px 0;color:#ff3333;text-align:center;font-size:22px;font-weight:bold;">各限五up具体记录</h3>
+    <div id="table1Outer" style="border:3px solid #000;background:#272735;border-radius:12px;padding:16px;">
+        <!-- JS渲染行：左图、右文字 -->
+    </div>
+
+
+
+    <!-- ========== 第二个表：对限五up顺序的个人总结（纯文字） ========== -->
+    <h3 style="margin:24px 0 12px 0;color:#ff3333;text-align:center;font-size:22px;font-weight:bold;">对限五up顺序的个人总结</h3>
+    <table style="width:100%;margin:0 auto 16px auto;border-collapse:collapse;background:#272735;border-radius:12px;overflow:hidden;">
+        <thead>
+        <tr>
+            <th style="padding:14px 8px;text-align:center;border-bottom:1px solid #38384c;background:#353548;color:#ffdd88;">以下内容基于历年返场记录得出，仅作参考</th>
+        </tr>
+        </thead>
+        <tbody id="table2Body">
+        </tbody>
+    </table>
+
+
+
+    <div class="history-wrap" style="margin-top:12px;">
+        <h3 style="margin:0 0 14px 0;color:#ff3333;text-align:center;font-size:22px;font-weight:bold;">历年限五返场所有记录</h3>
+        <div id="historyContainer"></div>
+    </div>
 
     <div class="bottom-info">
         由 <span class="bottom-author">S七月s_</span> 制作，希望真的有用<br>
         暂时未发现bug，如有遇到可以反馈<br>
         有新限定时，应该会进行更新
     </div>
+
 </div>
+
+<div id="page-question" class="box hide" style="border:3px solid #409eff;border-radius:16px;padding:24px;">
+    <button class="switch-btn" onclick="toggleMenu(event)">🔄</button>
+    <h2 style="margin-top:0;margin-bottom:24px;text-align:center;font-size:42px;">部分问题查询</h2>
+    <div style="margin-bottom:24px;">
+        <input id="questionSearchInput" type="text" placeholder="输入关键词搜索问题..." style="width:100%;padding:16px 18px;font-size:20px;border-radius:12px;border:3px solid #409eff;outline:none;">
+    </div>
+    <hr style="border:0;border-bottom:1px dashed #999;margin:24px 0;">
+    <div id="questionCardWrap" style="display:grid;gap:16px;margin-bottom:24px;">
+    </div>
+    <div class="bottom-info" style="text-align:center;">
+        由 <span class="bottom-author">S七月s_</span> 制作，希望真的有用<br>
+        暂时未发现bug，如有遇到可以反馈<br>
+        有新限定时，应该会进行更新
+    </div>
+</div>
+
+
+
+
 
 <script>
     let currentPage = "home";
@@ -1775,7 +1908,7 @@ data-content="<b>满配面板(只写配件影响的部分)</b><br>体力消耗�
     <div style="display:inline-block;text-align:left;">
         <p style="margin:4px 0;font-size:19px;">攻击力：60-180</p>
         <p style="margin:4px 0;font-size:19px;">耐久：300</p>
-        <p style="margin:4px 0;font-size:19px;">修理材料：2粘合剂2胶带</p>
+        <p style="margin:4px 0;font-size:19px;">修理材料：不知道，我没有</p>
         <p style="margin:4px 0;font-size:19px;">配件：
         <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
               data-content="<img src='images/hjgp.jpg' style='max-width:220px;'><br><b>合金弓片</b><br>效果：攻击力+40<br>获取：镇长篇开启后，在希望镇摊贩那里消耗5鳄龟壳+50银币购买">弓身</span>
@@ -2228,7 +2361,7 @@ data-content="<b>满配面板(只写配件影响的部分)</b><br>体力消耗�
     <p style="margin:4px 0;font-size:19px;">2️⃣攻击附加100点额外伤害</p>
     <p style="margin:4px 0;font-size:19px;">3️⃣攻击命中时为敌人叠加一层印记，叠满4层时消除印记追加200点额外伤害</p>
     <p style="margin:4px 0;font-size:19px;">4️⃣隐藏被动，无视伤害减免，鞭类武器都有，可能是特性</p>
-    <p style="margin:4px 0;font-size:19px;">获取：限时活动获取</p>
+    <p style="margin:4px 0;font-size:19px;">获取：游园镇左上角120币转盘抽取，保底物品</p>
     <p style="margin:4px 0;font-size:19px;">满配面板：
         <span data-tip style="color:#409eff;cursor:pointer;text-decoration:underline;margin:0 4px;"
               data-content="<b>满配面板(只写配件影响的部分)</b><br>攻击力：240-300<br>后摇-10%<br>体力消耗：15 ->13.5<br>蓄力时间：0.3 ->0.27<br>攻击附加200点额外伤害(计入被动)">详情</span>
@@ -2610,11 +2743,12 @@ data-content="<b>满配面板(只写配件影响的部分)</b><br>体力消耗�
 function goPage(pageType){
     // 关闭下拉菜单
     document.getElementById("menuList").classList.add("hide");
-    // 所有页面全部先隐藏（含新增的 page-weapons）
+    // 所有页面全部先隐藏（新增 page-question）
     document.getElementById("calcA").classList.add("hide");
     document.getElementById("calcB").classList.add("hide");
     document.getElementById("emptyPage").classList.add("hide");
     document.getElementById("page-weapons").classList.add("hide");
+    document.getElementById("page-question").classList.add("hide");
 
     //记录当前页面
     currentPage = pageType;
@@ -2626,7 +2760,18 @@ function goPage(pageType){
         document.getElementById("page-weapons").classList.remove("hide");
         renderWeapons();
     }else if(pageType === 'empty'){
+        console.log("✅ 进入empty分支，准备渲染");
         document.getElementById("emptyPage").classList.remove("hide");
+        renderWeaponTable();
+        renderHistoryTable();
+        renderTable1();
+        renderTable2();
+    }else if(pageType === 'question'){
+        document.getElementById("page-question").classList.remove("hide");
+        setTimeout(()=>{
+            renderQuestionPage();
+            initQuestionSearch();
+        }, 0);
     }else if(pageType === 'home'){
         // 返回主页面
         document.getElementById("calcA").classList.remove("hide");
@@ -2646,6 +2791,8 @@ function goPage(pageType){
         backTopBtn.style.display = 'none';
     }
 }
+
+
 
 
 
@@ -3159,10 +3306,710 @@ backTopBtn.addEventListener('click',function(){
                 }
             })
         })
+
+// 武器UP数据
+const weaponList = [
+  {
+    name: "幽影摄魂",
+    img: "images/yysh.jpg",
+    upStart: "2026-09-25",
+    upEnd: "2026-10-07"
+  },
+  {
+    name: "牢炎铳",
+    img: "images/lyc.jpg",
+    upStart: "2026-09-25",
+    upEnd: "2026-10-07"
+  },
+  {
+    name: "焱霜星核",
+    img: "images/ysxh.jpg",
+    upStart: "2026-11-13",
+    upEnd: "2026-11-22"
+  },
+  {
+    name: "年兽战鼓",
+    img: "images/nszg.jpg",
+    upStart: "2026-02-10",
+    upEnd: "2026-02-23"
+  },
+  {
+    name: "星空之刃",
+    img: "images/xkzr.jpg",
+    upStart: "2026-08-07",
+    upEnd: "2026-08-23"
+  },
+  {
+    name: "九霄雷烬",
+    img: "images/jxlj.jpg",
+    upStart: "2026-08-07",
+    upEnd: "2026-08-23"
+  },
+  {
+    name: "极寒裂域",
+    img: "images/jhly.jpg",
+    upStart: "2026-02-10",
+    upEnd: "2026-02-23"
+  },
+  {
+    name: "蛙好弓",
+    img: "images/wahaogong.jpg",
+    upStart: "2024-12-28",
+    upEnd: "2025-01-05"
+  },
+  {
+    name: "皇帝的新枪",
+    img: "images/hddxq.jpg",
+    upStart: "2026-10-30",
+    upEnd: "2026-11-01"
+  }
+];
+
+// 历年限五返场记录数据
+const historyList = [
+  {
+    activityName: "2024年国庆", // 红色框文字
+    blocks: [
+      {
+        weapons: [
+          {
+            name:"毒绞狩",
+            img:"images/yysh.jpg",
+            upTime:"2024-10-01 ~ 2024-10-07",
+            upTimes:"首次实装 (此时无301配件)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    activityName: "2025年元旦",
+    blocks: [
+      {
+        weapons: [
+          {
+            name:"牢炎铳",
+            img:"images/lyc.jpg",
+            upTime:"2024-01-28 ~ 2025-01-05",
+            upTimes:"首次实装 (此时无301配件)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+  activityName: "2025年春节",
+  blocks: [
+    {
+      weapons: [
+        {
+          name:"年兽战鼓",
+          img:"images/nszg.jpg",
+          upTime:"2025-01-25 ~ 2025-02-05",
+          upTimes:"首次实装 (此时无301配件和材质)"
+        },
+        {
+          name:"星空之刃",
+          img:"images/xkzr.jpg",
+          upTime:"2025-01-25 ~ 2025-02-05",
+          upTimes:"首次实装 (此时无301配件和材质)"
+        },
+        {
+          name:"机能套",
+          img:"images/jnt.jpg",
+          upTime:"获得套装效果",
+          upTimes:"受击后2秒内+50%移速，期间免疫减速"
+        },
+        {
+          name:"牢炎套",
+          img:"images/lyt.jpg",
+          upTime:"获得套装效果",
+          upTimes:"每秒对自身周围的敌人造成100点额外伤害"
+        }
+      ]
+    }
+  ]
+  },
+  {
+  activityName: "2025年三月中旬",
+  blocks: [
+    {
+      weapons: [
+        {
+          name:"毒绞狩",
+          img:"images/yysh.jpg",
+          upTime:"2025-03-15 ~ 2025-03-23",
+          upTimes:"第1次返场且获得301配件"
+        },
+        {
+          name:"机能套",
+          img:"images/jnt.jpg",
+          upTime:"各部位获得新配件",
+          upTimes:"机能拓展程序、机能反应堆、机能推进器"
+        }
+      ]
+    }
+  ]
+},
+{
+  activityName: "2025年劳动节",
+  blocks: [
+    {
+      weapons: [
+        {
+          name:"焱霜星核",
+          img:"images/ysxh.jpg",
+          upTime:"2025-04-26 ~ 2025-05-05",
+          upTimes:"首次实装且从此开始，往后新限五及其套装实装即满配"
+        }
+      ]
+    }
+  ]
+},
+{
+  activityName: "2025年六月中旬",
+  blocks: [
+    {
+      weapons: [
+        {
+          name:"牢炎铳",
+          img:"images/lyc.jpg",
+          upTime:"2025-06-14 ~ 2025-06-22",
+          upTimes:"第1次返场且获得301配件"
+        },
+        {
+          name:"牢炎套",
+          img:"images/lyt.jpg",
+          upTime:"各部位获得新配件",
+          upTimes:"龙炎拓展程序、龙吟结晶、龙吟装甲板"
+        }
+      ]
+    }
+  ]
+},
+{
+  activityName: "2025年周年庆",
+  blocks: [
+    {
+      weapons: [
+        {
+          name:"九霄雷烬",
+          img:"images/jxlj.jpg",
+          upTime:"2025-08-08 ~ 2025-08-24",
+          upTimes:"首次实装"
+        },
+        {
+          name:"年兽战鼓",
+          img:"images/nszg.jpg",
+          upTime:"2025-08-08 ~ 2025-08-24",
+          upTimes:"第1次返场且获得301配件和材质"
+        },
+        {
+          name:"年兽套",
+          img:"images/nst.jpg",
+          upTime:"各部位获得新配件",
+          upTimes:"年兽拓展程序、年兽核能装置、年兽膝甲"
+        }
+      ]
+    }
+  ]
+},
+{
+  activityName: "2025年国庆节",
+  blocks: [
+    {
+      weapons: [
+        {
+          name:"幽影摄魂",
+          img:"images/yysh.jpg",
+          upTime:"2025-09-27 ~ 2025-10-08",
+          upTimes:"哈基毒重做，301配件加强，算第2次返场吧"
+        },
+        {
+          name:"星空之刃",
+          img:"images/xkzr.jpg",
+          upTime:"2025-09-27 ~ 2025-10-08",
+          upTimes:"数值加强、被动加强、获得301配件和材质，第1次返场"
+        },
+        {
+          name:"机能套",
+          img:"images/jnt.jpg",
+          upTime:"套装效果加强",
+          upTimes:"受击后的移速加成由50%提升至75%"
+        },
+        {
+          name:"星空套",
+          img:"images/xkt.jpg",
+          upTime:"部件加强、套装效果加强、星空之翼加强、各部位获得新配件",
+          upTimes:"部件增伤由5%提升至10%，套装效果回血由10点提升至30点，星空之翼获得新被动，新配件为星空拓展程序、星空膝甲"
+        }
+      ]
+    }
+  ]
+},
+{
+  activityName: "2025年十一月中旬",
+  blocks: [
+    {
+      weapons: [
+        {
+          name:"焱霜星核",
+          img:"images/ysxh.jpg",
+          upTime:"2025-11-14 ~ 2025-11-23",
+          upTimes:"第1次返场"
+        }
+      ]
+    }
+  ]
+},
+{
+  activityName: "2026年元旦",
+  blocks: [
+    {
+      weapons: [
+        {
+          name:"牢炎铳",
+          img:"images/lyc.jpg",
+          upTime:"2025-12-27 ~ 2026-01-04",
+          upTimes:"第2次返场"
+        }
+      ]
+    }
+  ]
+},
+{
+  activityName: "2026年春节",
+  blocks: [
+    {
+      weapons: [
+        {
+          name:"极寒裂域",
+          img:"images/jhly.jpg",
+          upTime:"2026-02-10 ~ 2026-02-23",
+          upTimes:"首次实装"
+        },
+        {
+          name:"年兽战鼓",
+          img:"images/nszg.jpg",
+          upTime:"2026-02-10 ~ 2026-02-23",
+          upTimes:"第2次返场"
+        },
+        {
+          name:"年兽套",
+          img:"images/nst.jpg",
+          upTime:"套装效果加强",
+          upTimes:"太多了不想写，去快速积分查询页面看吧"
+        }
+      ]
+    }
+  ]
+},
+{
+  activityName: "2026年劳动节",
+  blocks: [
+    {
+      weapons: [
+        {
+          name:"焱霜星核",
+          img:"images/ysxh.jpg",
+          upTime:"2026-05-01 ~ 2026-05-10",
+          upTimes:"第2次返场"
+        }
+      ]
+    }
+  ]
+},
+{
+  activityName: "2026年六月中旬",
+  blocks: [
+    {
+      weapons: [
+        {
+          name:"幽影摄魂",
+          img:"images/yysh.jpg",
+          upTime:"2026-06-19 ~ 2026-06-28",
+          upTimes:"第3次返场"
+        }
+      ]
+    }
+  ]
+},
+{
+  activityName: "2026年周年庆",
+  blocks: [
+    {
+      weapons: [
+        {
+          name:"九霄雷烬",
+          img:"images/jxlj.jpg",
+          upTime:"2026-08-07 ~ 2026-08-23",
+          upTimes:"第1次返场"
+        },
+        {
+          name:"星空之刃",
+          img:"images/xkzr.jpg",
+          upTime:"2026-08-07 ~ 2026-08-23",
+          upTimes:"第2次返场"
+        }
+      ]
+    }
+  ]
+},
+{
+  activityName: "2026年国庆节",
+  blocks: [
+    {
+      weapons: [
+        {
+          name:"幽影摄魂",
+          img:"images/yysh.jpg",
+          upTime:"2026-09-25 ~ 2026-10-07",
+          upTimes:"第4次返场"
+        },
+        {
+          name:"牢炎铳",
+          img:"images/lyc.jpg",
+          upTime:"2026-09-25 ~ 2026-10-07",
+          upTimes:"第3次返场"
+        }
+      ]
+    }
+  ]
+},
+{
+  activityName: "2026年十一月中旬",
+  blocks: [
+    {
+      weapons: [
+        {
+          name:"焱霜星核",
+          img:"images/ysxh.jpg",
+          upTime:"2026-11-13 ~ 2026-11-22",
+          upTimes:"第3次返场"
+        }
+      ]
+    }
+  ]
+},
+
+];
+
+// 渲染历史返场表
+function renderHistoryTable() {
+  const container = document.getElementById("historyContainer");
+  container.innerHTML = "";
+
+  // 最外围只有一个黑色大框
+  const outerBox = document.createElement("div");
+  outerBox.className = "history-item";
+
+  historyList.forEach(act => {
+    // 红色标题栏
+    const titleDom = document.createElement("div");
+    titleDom.className = "history-title";
+    titleDom.innerText = act.activityName;
+    outerBox.appendChild(titleDom);
+
+    // 活动内的黄色内容块
+    act.blocks.forEach(block => {
+      const blockDom = document.createElement("div");
+      blockDom.className = "history-block";
+
+      block.weapons.forEach(wp => {
+        const row = document.createElement("div");
+        row.className = "history-weapon-row";
+        row.innerHTML = `
+          <img src="${wp.img}" alt="${wp.name}">
+          <div class="history-weapon-info">
+            <div>${wp.name}</div>
+            <div>${wp.upTime}</div>
+            <div>${wp.upTimes}</div>
+          </div>
+        `;
+        blockDom.appendChild(row);
+      });
+
+      outerBox.appendChild(blockDom);
+    });
+  });
+
+  container.appendChild(outerBox);
+}
+
+const table1Data = [
+  {
+    img:"images/yysh.jpg",
+    text:"UP时间：24年国庆、25年3月中旬、25年国庆节 (重做)、26年6月中旬、26年国庆节\n最长复刻时间：8个月零12天，即255天\n最短复刻时间：2个月零28天，即89天"
+  },
+  {
+    img:"images/lyc.jpg",
+    text:"UP时间：25年元旦、25年6月中旬、26年元旦、26年国庆节\n最长复刻时间：8个月零21天，即264天\n最短复刻时间：5个月零9天，即160天"
+  },
+  {
+    img:"images/nszg.jpg",
+    text:"UP时间：25年春节、25年周年庆、26年春节\n最长复刻时间：6个月零3天，即184天\n最短复刻时间：5个月零17天，即170天"
+  },
+  {
+    img:"images/xkzr.jpg",
+    text:"UP时间：25年春节、25年国庆节、26年周年庆\n最长复刻时间：9个月零30天，即303天\n最短复刻时间：7个月零22天，即234天"
+  },
+  {
+    img:"images/ysxh.jpg",
+    text:"UP时间：25年劳动节、25年11月中旬、26年劳动节、26年11月中旬\n最长复刻时间：6个月零9天，即193天\n最短复刻时间：5个月零8天，即159天"
+  },
+  {
+    img:"images/jxlj.jpg",
+    text:"UP时间：25年周年庆、26年周年庆\n最长复刻时间：11个月零14天，即348天\n最短复刻时间：11个月零14天，即348天"
+  },
+  {
+    img:"images/jhly.jpg",
+    text:"UP时间：26年春节\n最长复刻时间：8个月零28天，即268天\n最短复刻时间：没复刻过"
+  }
+];
+
+function renderTable1(){
+  const outer = document.getElementById("table1Outer");
+  outer.innerHTML = "";
+  table1Data.forEach((item, index) => {
+    const row = document.createElement("div");
+    row.style.display = "flex";
+    row.style.gap = "16px";
+    row.style.padding = "16px 0"; // 上下加大间距，扩大分隔区域
+    row.style.alignItems = "center";
+
+    // 分隔线：不是第一行，顶部加浅色横线
+    if(index > 0){
+      row.style.borderTop = "1px solid #44465a"; // 浅色分割线，适配深色背景
+    }
+
+    // 左侧图片区域
+    const imgBox = document.createElement("div");
+    imgBox.style.flex = "0 0 120px";
+    imgBox.innerHTML = `<img src="${item.img}" style="width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:4px;">`;
+
+    // 右侧文字区域
+    const textBox = document.createElement("div");
+    textBox.style.flex = "1";
+    textBox.style.color = "#fff";
+    textBox.style.fontSize = "16px";
+    textBox.style.whiteSpace = "pre-line";
+    textBox.innerText = item.text;
+
+    row.appendChild(imgBox);
+    row.appendChild(textBox);
+    outer.appendChild(row);
+  })
+}
+
+
+// 渲染第二个表：纯文字
+function renderTable2(){
+  const tbody = document.getElementById("table2Body");
+  tbody.innerHTML = "";
+  const textList = [
+    "1.限五复刻的时间基本按<span style='color:#ff3333;'>半年</span>来计算，早的话一般就早1个月左右，晚的话能按1年算",
+    "2.12万8的限五目前来看是只会在相对重要的节假日返场，例如春节和周年庆，国庆节是可以但不一定返，各月份中旬基本没希望，从第4条看元旦节和劳动节其实也有点难",
+    "3.<span style='color:#ff3333;'>年兽战鼓和九霄雷烬</span>的返场基本可以参考第二条",
+    "4.<span style='color:#ff3333;'>首次实装为单up</span>的限五是可以在<span style='color:#ff3333;'>次年同一时间</span>返场的，目前这些限五有幽影摄魂、龙炎铳和焱霜星核。从复刻记录看，它们都分别在国庆、元旦和劳动节返场过，甚至幽影还成就了89天光速返场的记录，先预言一波元旦龙枪返场",
+    "5.目前来看，一年中可以有限五返场的时间分别有元旦节、春节、3月中旬、劳动节、6月中旬、周年庆、国庆节、11月中旬，共8次",
+    "6.对第5条补充，26年3月没有限五返场有可能是嗯。。。懂得都懂的原因，是不是一个稳定的返场时间点得看明年怎么说咯，如果你游能挺下去的话",
+    "7.6月中旬的返场时间不一定会对上端午节，这两年的11月中旬返场限五我感觉算是剧情更新顺便带上的",
+    "8.限五返场可能会受武器强度影响，强且好用的限五，返场周期基本都是稳定的长",
+    "9.目前7把限五的返场情况，根据上述8条经验可以预测个大概了，但策划说过会有新限五，届时这些结论是否适用就另说",
+    "10.只是凑个整，依旧免责声明，本模块所有内容均为个人理解，不保真，仅作参考"
+  ];
+  textList.forEach(txt=>{
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td style="padding:14px 8px;color:#fff;text-align:left;font-size:17px;line-height:1.6;border-bottom:1px solid #38384c;">${txt}</td>`;
+    tbody.appendChild(tr);
+  })
+}
+
+
+
+function getWeaponInfo(endDateStr) {
+  const endDate = new Date(endDateStr);
+  const now = new Date();
+  if (now < endDate) {
+    return {
+      isUping: true,
+      day: 0,
+      text: "正在UP"
+    }
+  } else {
+    const diffMs = now - endDate;
+    const diffDay = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    return {
+      isUping: false,
+      day: diffDay,
+      text: diffDay + " 天"
+    }
+  }
+}
+
+function renderWeaponTable() {
+  console.log("renderWeaponTable运行了");
+  const tbody = document.getElementById("weaponTableBody");
+  console.log("tbody = ", tbody);
+  if (!tbody) return;
+
+  let listWithInfo = [...weaponList].map(item => {
+    const info = getWeaponInfo(item.upEnd);
+    return { ...item, ...info };
+  });
+
+  listWithInfo.sort((a, b) => {
+    if (a.isUping && !b.isUping) return -1;
+    if (!a.isUping && b.isUping) return 1;
+    return a.day - b.day;
+  });
+
+  tbody.innerHTML = "";
+  listWithInfo.forEach(item => {
+    const tr = document.createElement("tr");
+    const highlightStyle = item.isUping ? "color:#ff4444;font-weight:bold;" : "";
+tr.innerHTML = `
+  <td style="padding:10px 8px;text-align:center;width:40%;">
+    <img class="weapon-img" src="${item.img}" alt="${item.name}">
+    <div class="weapon-name">${item.name}</div>
+  </td>
+  <td style="padding:10px 8px;text-align:center;width:35%;font-size:0.92rem;">
+    ${item.upStart} ~ ${item.upEnd}
+  </td>
+  <td style="padding:10px 8px;text-align:center;width:25%;${highlightStyle}">
+    ${item.text}
+  </td>
+`
+    tbody.appendChild(tr);
+  })
+}
+
 </script>
+
+<script>
+    // ========== 配置区（在这里增删卡片！！）==========
+    // 【常态固定第一个卡片】不参与随机
+    const fixedFirstCard = {
+        q: "这个页面是何意味啊",
+        a: "因为我大概寒假前都不会再对这个网站有什么大更新了，所以就用这个网页替代平常的更新吧，有什么想在这里增加的问题可以私信我，我觉得这个问题有意义就加进去。搜索栏是实时搜索，输入关键词就可以获得所有问题中包含关键词的卡片，暂不支持模糊搜索，部分关键词按官方文本来，例如美魜人岛、蛋尽凉厥这种，搜不出来要么关键词不对，要么就是没有这个卡片，当然我也尽量用一般玩家常用的叫法来写问题"
+    };
+
+    // 【普通卡片池】常态随机抽取、搜索时模糊匹配
+    // 新增普通卡片就在这里，照着格式加 { q:"标题", a:"内容" },
+    const normalPool = [
+        {
+            q: "舟几口岛怎么开启？海战王座怎么开启？",
+            a: "前置条件：完成尼奥终章、背包里有两本航行手册，去海盗岛找船大副对话，即可开启舟几口岛。然后跟着剧情走就可以开启海战王座。注意，请不要把航行手册放到个人家园的仓库内，开启舟几口岛并不会消耗掉这两本手册"
+        },
+        {
+            q: "限五返场的时间有哪些？",
+            a: "目前来看，一年中可以有限五返场的时间分别有元旦节、春节、3月中旬、劳动节、6月中旬、周年庆、国庆节、11月中旬，共8次"
+        },
+        {
+            q: "12万8的限五什么时候返场？",
+            a: "12万8的限五目前来看是只会在相对重要的节假日返场，例如春节和周年庆，国庆节是可以但不一定返"
+        },
+        {
+            q: "宝藏岛怎么开启？",
+            a: "搜集满5块藏宝图碎片后，去海盗岛右边的入口，提交碎片后开启，之后宝藏岛就会显示在港口地图上了。详情可看我26年9月22日那期视频"
+        },
+        {
+            q: "航行手册在哪里拿？",
+            a: "两本手册都在宝藏岛，蛇影地牢和蛙血地牢各有一本。这两个地牢我并没有做一图流，只有探索视频。我觉得也没必要让你们去搜那两期视频了，质量挺低的，也许后面攻略补全计划里会做吧，看你游能活多久"
+        },
+    ];
+
+    // 【隐藏彩蛋卡片】
+    // triggerWord：触发密码，必须一字不差完整输入才显示，不会出现在默认列表
+    const secretCard = {
+        triggerWord: "S七月s_",
+        q: "哎呀呀，被找到了",
+        a: "不会吧不会吧，怎么会有人拿搜索搜我啊"
+    };
+    // ===============================================
+
+    // 打乱数组工具函数
+    function shuffleArray(arr) {
+        const newArr = [...arr];
+        for (let i = newArr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+        }
+        return newArr;
+    }
+
+    // 渲染卡片主函数
+    function renderQuestionPage(searchKey = "") {
+    const wrap = document.getElementById("questionCardWrap");
+    if (!wrap) return;
+    wrap.innerHTML = "";
+    let showList = [];
+
+    if (searchKey.trim() !== "") {
+        // 只匹配标题（q），不再检索回答内容a
+        const key = searchKey.toLowerCase();
+        const matchNormal = normalPool.filter(item =>
+            item.q.toLowerCase().includes(key)
+        );
+        showList = [...matchNormal];
+
+        // 精确完整匹配密码才出彩蛋
+        if (searchKey.trim() === secretCard.triggerWord) {
+            showList.push(secretCard);
+        }
+    } else {
+        // 无搜索：固定首卡 + 随机3张普通卡
+        showList.push(fixedFirstCard);
+        const tempPool = [...normalPool];
+        shuffleArray(tempPool);
+        const random3 = tempPool.slice(0, 3);
+        showList.push(...random3);
+    }
+
+    if (showList.length === 0) {
+        wrap.innerHTML = "<div style='text-align:center;padding:24px;color:#f0f0f8;font-size:18px;'>没有匹配的问题</div>";
+        return;
+    }
+
+    // 卡片样式（沿用你刚才深色版本）
+    showList.forEach(item => {
+        const card = document.createElement("div");
+        card.innerHTML = `
+<div style="padding:20px 24px;background:#24233b;border:2px solid #111;border-radius:12px;box-shadow: 2px 2px 6px #00000033;margin-bottom:16px;">
+    <div style="font-size:24px;font-weight:bold;color:#ffffff;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #444466;">
+        ${item.q}
+    </div>
+    <div style="font-size:20px;color:#f0f0f8;line-height:1.8;">
+        ${item.a}
+    </div>
+</div>
+`;
+        wrap.appendChild(card);
+    })
+}
+
+
+    // 搜索框绑定（只绑定一次）
+    let questionInputBind = false;
+    function initQuestionSearch() {
+        setTimeout(()=>{
+            if(questionInputBind) return;
+            const input = document.getElementById("questionSearchInput");
+            if(!input) return;
+            input.oninput = () => {
+                renderQuestionPage(input.value);
+            }
+            questionInputBind = true;
+        },0)
+    }
+</script>
+
+
+
 
 </body>
 </html>
+
 
 
 
