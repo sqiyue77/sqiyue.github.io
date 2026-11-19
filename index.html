@@ -3887,15 +3887,7 @@ tr.innerHTML = `
 </script>
 
 <script>
-    // ========== 配置区（在这里增删卡片！！）==========
-    // 【常态固定第一个卡片】不参与随机
-    const fixedFirstCard = {
-        q: "这个页面是何意味啊",
-        a: "因为我大概寒假前都不会再对这个网站有什么大更新了，所以就用这个网页替代平常的更新吧，有什么想在这里增加的问题可以私信我，我觉得这个问题有意义就加进去。搜索栏是实时搜索，输入关键词就可以获得所有问题中包含关键词的卡片，暂不支持模糊搜索，部分关键词按官方文本来，例如美魜人岛、蛋尽凉厥这种，搜不出来要么关键词不对，要么就是没有这个卡片，当然我也尽量用一般玩家常用的叫法来写问题"
-    };
-
-    // 【普通卡片池】常态随机抽取、搜索时模糊匹配
-    // 新增普通卡片就在这里，照着格式加 { q:"标题", a:"内容" },
+function renderQuestionPage(searchKey = "") {
     const normalPool = [
         {
             q: "舟几口岛怎么开启？海战王座怎么开启？",
@@ -3917,48 +3909,38 @@ tr.innerHTML = `
             q: "航行手册在哪里拿？",
             a: "两本手册都在宝藏岛，蛇影地牢和蛙血地牢各有一本。这两个地牢我并没有做一图流，只有探索视频。我觉得也没必要让你们去搜那两期视频了，质量挺低的，也许后面攻略补全计划里会做吧，看你游能活多久"
         },
+        {
+            q: "夜行者有几只？哪里有夜行者？移速药剂零氪最多能打几针？",
+            a: "夜行者一共有10只。分别在洞穴里有1只、中心城区大街上有3只（听说修复之后变少了）、中心城区下水道里有1只、火力发电厂的发电机房里的通风管道有2只。洞穴里的深渊可以再打3只（需要有狗）。零氪目前最多只能打8针，除深渊那三只打不了外，8针分别来自7只夜行者和1个夜行者血清，这个夜行者血清可以在中心城区的叛军营地内搜出，位置在飞机模型那个区域的箱子里。此外24年入坑的牢玩家在跨年时领取过3针移速药剂，自然就可以到10%，我看策划也不会再改"
+        }
     ];
-
-    // 【隐藏彩蛋卡片】
-    // triggerWord：触发密码，必须一字不差完整输入才显示，不会出现在默认列表
+    const fixedFirstCard = {
+        q: "这个页面是何意味啊",
+        a: "因为我大概寒假前都不会再对这个网站有什么大更新了，所以就用这个网页替代平常的更新吧，有什么想在这里增加的问题可以私信我，我觉得这个问题有意义就加进去。搜索栏是实时搜索，输入关键词就可以获得所有问题中包含关键词的卡片，暂不支持模糊搜索，部分关键词按官方文本来，例如美魜人岛、蛋尽凉厥这种，搜不出来要么关键词不对，要么就是没有这个卡片，当然我也尽量用一般玩家常用的叫法来写问题"
+    };
     const secretCard = {
         triggerWord: "S七月s_",
         q: "哎呀呀，被找到了",
         a: "不会吧不会吧，怎么会有人拿搜索搜我啊"
     };
-    // ===============================================
 
-    // 打乱数组工具函数
-    function shuffleArray(arr) {
-        const newArr = [...arr];
-        for (let i = newArr.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
-        }
-        return newArr;
-    }
-
-    // 渲染卡片主函数
-    function renderQuestionPage(searchKey = "") {
     const wrap = document.getElementById("questionCardWrap");
     if (!wrap) return;
     wrap.innerHTML = "";
     let showList = [];
 
-    if (searchKey.trim() !== "") {
-        // 只匹配标题（q），不再检索回答内容a
-        const key = searchKey.toLowerCase();
+    const rawKey = searchKey.trim();
+    const key = rawKey.toLowerCase();
+
+    if (rawKey !== "") {
         const matchNormal = normalPool.filter(item =>
             item.q.toLowerCase().includes(key)
         );
         showList = [...matchNormal];
-
-        // 精确完整匹配密码才出彩蛋
-        if (searchKey.trim() === secretCard.triggerWord) {
+        if (rawKey.toLowerCase() === secretCard.triggerWord.toLowerCase()) {
             showList.push(secretCard);
         }
     } else {
-        // 无搜索：固定首卡 + 随机3张普通卡
         showList.push(fixedFirstCard);
         const tempPool = [...normalPool];
         shuffleArray(tempPool);
@@ -3971,37 +3953,22 @@ tr.innerHTML = `
         return;
     }
 
-    // 卡片样式（沿用你刚才深色版本）
     showList.forEach(item => {
         const card = document.createElement("div");
         card.innerHTML = `
-<div style="padding:20px 24px;background:#24233b;border:2px solid #111;border-radius:12px;box-shadow: 2px 2px 6px #00000033;margin-bottom:16px;">
-    <div style="font-size:24px;font-weight:bold;color:#ffffff;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #444466;">
-        ${item.q}
-    </div>
-    <div style="font-size:20px;color:#f0f0f8;line-height:1.8;">
-        ${item.a}
-    </div>
-</div>
-`;
+        <div style="padding:20px 24px;background:#24233b;border:2px solid #111;border-radius:12px;box-shadow: 2px 2px 6px #00000033;margin-bottom:16px;">
+            <div style="font-size:24px;font-weight:bold;color:#ffffff;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #444466;">
+                ${item.q}
+            </div>
+            <div style="font-size:20px;color:#f0f0f8;line-height:1.8;">
+                ${item.a}
+            </div>
+        </div>
+         `;
         wrap.appendChild(card);
     })
 }
 
-
-    // 搜索框绑定（只绑定一次）
-    let questionInputBind = false;
-    function initQuestionSearch() {
-        setTimeout(()=>{
-            if(questionInputBind) return;
-            const input = document.getElementById("questionSearchInput");
-            if(!input) return;
-            input.oninput = () => {
-                renderQuestionPage(input.value);
-            }
-            questionInputBind = true;
-        },0)
-    }
 </script>
 
 
